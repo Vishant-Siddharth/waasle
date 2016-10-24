@@ -1,0 +1,10 @@
+gmail:
+email = waaslelaundry@gmail.com
+pass = laundrywaasle
+
+zoho
+email = admin@waasle.com
+pass = waaslelaundry19
+
+email = devesh@waasle.com
+pass = Knowledge19
