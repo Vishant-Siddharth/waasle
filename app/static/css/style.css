@@ -24,7 +24,7 @@ a:hover, a:focus {
 }
 @font-face {
    font-family: 'Dosis-Regular';
-   src: url(../fonts/Dosis-Regular.ttf) format('truetype');
+   src: url(../fonts/Dosis-Regular.ttf) format('truetype');url(../fonts/glyphicons-halflings-regular.woff)
 }
 @font-face {
    font-family: 'Dosis-Bold';

@@ -13,9 +13,9 @@
     </title>
 
     {%block styles %}
-    <link href="/static/css/style.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="/static/css/bootstrap.css" rel="stylesheet" type="text/css" media="all" />
-    <link href="/static/css/memenu.css" rel="stylesheet" type="text/css" media="all" />
+	<link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
+	<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{ url_for('static', filename='css/memenu.css') }}" rel="stylesheet" type="text/css" media="all" />
     {% endblock styles %}
 
     {% block scripts %}
@@ -46,99 +46,49 @@
 <div class="header-top">
 	 <div class="header-bottom">
 				<div class="logo">
-					<h1><a href="index.html">Waasle</a></h1>
+					<h1><a href="{{ url_for('main.index') }}">Waasle</a></h1>
 				</div>
 			 <!---->
 			 <div class="top-nav">
-				<ul class="memenu skyblue"><li class="active"><a href="index.html">Home</a></li>
-					<li class="grid"><a href="#">Products</a>
+				<ul class="memenu skyblue"><li class="active"><a href= "{{ url_for('main.index') }}">Home</a></li>
+					<li class="grid"><a href="#">Login</a>
+					<li class="grid"><a href="{{ url_for('main.pricing') }}">Pricing</a>
 						<div class="mepanel">
 							<div class="row">
 								<div class="col1 me-one">
-									<h4>Shop</h4>
-									<ul>
-										<li><a href="product.html">New Arrivals</a></li>
-										<li><a href="product.html">Home</a></li>
-										<li><a href="product.html">Decorates</a></li>
-										<li><a href="product.html">Accessories</a></li>
-										<li><a href="product.html">Kids</a></li>
-										<li><a href="product.html">Login</a></li>
-										<li><a href="product.html">Brands</a></li>
-										<li><a href="product.html">My Shopping Bag</a></li>
-									</ul>
-								</div>
-								<div class="col1 me-one">
-									<h4>Type</h4>
-									<ul>
-										<li><a href="product.html">Diwali Lights</a></li>
-										<li><a href="product.html">Tube Lights</a></li>
-										<li><a href="product.html">Bulbs</a></li>
-										<li><a href="product.html">Ceiling Lights</a></li>
-										<li><a href="product.html">Accessories</a></li>
-										<li><a href="product.html">Lanterns</a></li>
-									</ul>
-								</div>
-								<div class="col1 me-one">
-									<h4>Popular Brands</h4>
-									<ul>
-										<li><a href="product.html">Everyday</a></li>
-										<li><a href="product.html">Philips</a></li>
-										<li><a href="product.html">Havells</a></li>
-										<li><a href="product.html">Wipro</a></li>
-										<li><a href="product.html">Jaguar</a></li>
-										<li><a href="product.html">Ave</a></li>
-										<li><a href="product.html">Gold Medal</a></li>
-										<li><a href="product.html">Anchor</a></li>
-									</ul>
-								</div>
+                                    <ul>
+                                    <li><a href="{{ url_for('main.pricing') }}"><h5>Wash & Fold</h5></a></li>
+                                    <li><a href="{{ url_for('main.pricing') }}"><h5>Wash & Iron</h5></a></li>
+                                    <li><a href="{{ url_for('main.pricing') }}"><h5>Dry cleaning</h5></a></li>
+
+                                    </ul>
+                                </div>
+
 							</div>
 						</div>
 					</li>
-					<li class="grid"><a href="#">Accessories</a>
+					<li class="grid"><a href="{{ url_for('main.services') }}">Services</a>
 						<div class="mepanel">
 							<div class="row">
 								<div class="col1 me-one">
-									<h4>Shop</h4>
 									<ul>
-										<li><a href="product.html">New Arrivals</a></li>
-										<li><a href="product.html">Home</a></li>
-										<li><a href="product.html">Decorates</a></li>
-										<li><a href="product.html">Accessories</a></li>
-										<li><a href="product.html">Kids</a></li>
-										<li><a href="product.html">Login</a></li>
-										<li><a href="product.html">Brands</a></li>
-										<li><a href="product.html">My Shopping Bag</a></li>
+										<li><a href="{{ url_for('main.services') }}"><h5>Laundry</h5></a></li>
+										<li><a href="{{ url_for('main.services') }}"><h5>Steam Press</h5></a></li>
+										<li><a href="{{ url_for('main.services') }}"><h5>Dry clean</h5></a></li>
+										<li><a href="{{ url_for('main.services') }}"><h5>Wash & Fold</h5></a></li>
+										<li><a href="{{ url_for('main.services') }}"><h5>Free Pick and Drop</h5></a></li>
+										<li><a href="{{ url_for('main.services') }}"><h5>Starching</h5></a></li>
+										<li><a href="{{ url_for('main.services') }}"><h5>Antiseptic Wash</h5></a></li>
+										<li><a href="{{ url_for('main.services') }}"><h5>Fabric Softener</h5></a></li>
+										<li><a href="{{ url_for('main.services') }}"><h5>Fabric Conditioner</h5></a></li>
+										<li><a href="{{ url_for('main.services') }}"><h5>Live Processing centre</h5></a></li>
 									</ul>
-								</div>
-								<div class="col1 me-one">
-									<h4>Type</h4>
-									<ul>
-										<li><a href="product.html">Diwali Lights</a></li>
-										<li><a href="product.html">Tube Lights</a></li>
-										<li><a href="product.html">Bulbs</a></li>
-										<li><a href="product.html">Ceiling Lights</a></li>
-										<li><a href="product.html">Accessories</a></li>
-										<li><a href="product.html">Lanterns</a></li>
-									</ul>
-								</div>
-								<div class="col1 me-one">
-									<h4>Popular Brands</h4>
-									<ul>
-										<li><a href="product.html">Everyday</a></li>
-										<li><a href="product.html">Philips</a></li>
-										<li><a href="product.html">Havells</a></li>
-										<li><a href="product.html">Wipro</a></li>
-										<li><a href="product.html">Jaguar</a></li>
-										<li><a href="product.html">Ave</a></li>
-										<li><a href="product.html">Gold Medal</a></li>
-										<li><a href="product.html">Anchor</a></li>
-									</ul>
-								</div>
-							</div>
-						</div>
-					</li>
-					<li class="grid"><a href="typo.html">Typo</a></li>
-					<li class="grid"><a href="contact.html">Contact</a></li>
+							    </div>
+						    </div>
+                        </div>
+                    </li>
+					<li class="grid"><a href="{{ url_for('main.faq') }}">FAQ</a></li>
+					<li class="grid"><a href="{{ url_for('main.contact') }}">Contact</a></li>
 				</ul>
 			 </div>
 			 <!---->
@@ -159,7 +109,9 @@
 <!---->
     {% endblock header %}
     {% block content %}
-    <h1>this is awesome</h1>
+
+
+
     {% endblock content %}
 
     {% block footer %}
@@ -179,36 +131,35 @@
 		 <div class="footer-grids">
 			 <div class="col-md-3 about-us">
 				 <h3>About Us</h3>
-				 <p>Maecenas nec auctor sem. Vivamus porttitor tincidunt elementum nisi a, euismod rhoncus urna. Curabitur scelerisque vulputate arcu eu pulvinar. Fusce vel neque diam</p>
+				 <p>WAASLE laundry provides one stop clothing specialist that offers full laundry services. We are arriving on demand laundry service because washing is a daily need just like food.
+
+				 </p>
 			 </div>
 			 <div class="col-md-3 ftr-grid">
 					<h3>Information</h3>
 					<ul class="nav-bottom">
-						<li><a href="#">Track Order</a></li>
-						<li><a href="#">New Products</a></li>
-						<li><a href="#">Location</a></li>
-						<li><a href="#">Our Stores</a></li>
-						<li><a href="#">Best Sellers</a></li>
+						<li><a href="{{ url_for('main.location') }}">Location</a></li>
+						<li><a href="{{ url_for('main.services') }}">Services</a></li>
+						<li><a href="{{ url_for('main.mission') }}">Our Mission</a></li>
+						<li><a href="{{ url_for('main.vision') }}">Our Vision</a></li>
 					</ul>
 			 </div>
 			 <div class="col-md-3 ftr-grid">
 					<h3>More Info</h3>
 					<ul class="nav-bottom">
-						<li><a href="login.html">Login</a></li>
-						<li><a href="#">FAQ</a></li>
-						<li><a href="contact.html">Contact</a></li>
-						<li><a href="#">Shipping</a></li>
-						<li><a href="#">Membership</a></li>
+						<li><a href="#">Login</a></li>
+						<li><a href="{{ url_for('main.faq') }}">FAQ</a></li>
+						<li><a href="{{ url_for('main.contact') }}">Contact</a></li>
+						<li><a href="{{ url_for('main.blog') }}">Blog</a></li>
 					</ul>
 			 </div>
 			 <div class="col-md-3 ftr-grid">
-					<h3>Categories</h3>
+					<h3>Why Us</h3>
 					<ul class="nav-bottom">
-						<li><a href="#">Car Lights</a></li>
-						<li><a href="#">LED Lights</a></li>
-						<li><a href="#">Decorates</a></li>
-						<li><a href="#">Wall Lights</a></li>
-						<li><a href="#">Protectors</a></li>
+						<li><a href="{{ url_for('main.why_us') }}">Eco-Friendly</a></li>
+						<li><a href="{{ url_for('main.why_us') }}">Affordable</a></li>
+						<li><a href="{{ url_for('main.why_us') }}">Convenience</a></li>
+						<li><a href="{{ url_for('main.why_us') }}">Packaging & Quality</a></li>
 					</ul>
 			 </div>
 			 <div class="clearfix"></div>
@@ -220,13 +171,7 @@
 		 <div class="copy">
 			 <p>© 2015 Lighting. All Rights Reserved | Design by  <a href="http://w3layouts.com/" target="_blank">W3layouts</a> </p>
 		 </div>
-		 <div class="social">
-				<a href="#"><i class="facebook"></i></a>
-				<a href="#"><i class="twitter"></i></a>
-				<a href="#"><i class="dribble"></i></a>
-				<a href="#"><i class="google"></i></a>
-				<a href="#"><i class="youtube"></i></a>
-		 </div>
+
 		 <div class="clearfix"></div>
 	 </div>
 </div>
