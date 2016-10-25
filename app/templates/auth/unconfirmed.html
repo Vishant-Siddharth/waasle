@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block title %}
+Waasle Laundry| Unconfirmed | Please confirm your email address
+{% endblock %}
+
+{% block content %}
+<div class="container">
+		 <ol class="breadcrumb">
+		<li><a href="{{ url_for('main.index') }}">Home</a></li>
+            <li class="active">Unconfirmed</li>
+        </ol>
+    <h2 class="top">Confirm your email account</h2><br>
+
+<div class="well">
+    <h4>Hello, {{ current_user.name }}!</h4>
+    <br>
+    <h4>You have not confirmed your account yet.</h4>
+    <br>
+    <p>Before you can access this site you need to confirm your account.
+        Check your inbox, you should have received an email with a confirmation link.</p>
+    <br>
+    <h4>Need another confirmation email?</h4>
+    <br>
+    <div class="Buttons">
+        <h2 class="b2">
+            <a href="{{ url_for('auth.resend_confirmation') }}"><span class="label label-primary">Click here</span></a>
+        </h2>
+    </div>
+    </div>
+    </div>
+
+{% endblock %}

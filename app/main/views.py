@@ -1,22 +1,13 @@
 from flask import render_template, session, redirect, url_for, request, flash
 from ..main import main
-import json
 from .forms import QueryForm
-from ..auth.forms import RegistrationForm
 from ..models import User, Contact
 from app import db
-from datetime import datetime
-from urllib.request import urlopen
 
 
 @main.route('/', methods=['GET', 'POST'])
 def index():
-    return render_template('base.html')
-
-
-@main.route('/login')
-def login():
-    return render_template('account.html')
+    return render_template('index.html')
 
 
 @main.route('/pricing', methods=['GET', 'POST'])
@@ -27,6 +18,20 @@ def pricing():
 @main.route('/contact', methods=['GET', 'POST'])
 def contact():
     form = QueryForm()
+    if form.validate_on_submit():
+        user = Contact()
+        try:
+            user.name = form.name.data
+            user.email = form.email.data
+            user.mob = form.number.data
+            user.description = form.description.data
+            db.session.add(user)
+            db.session.commit()
+            flash('Your query has been successfully submitted.')
+            return redirect(url_for('main.index'))
+        except:
+            db.session.rollback()
+            flash('Something Went Wrong. Please try again')
     return render_template('contact.html', form=form)
 
 
@@ -63,3 +68,8 @@ def blog():
 @main.route('/why-us', methods=['GET', 'POST'])
 def why_us():
     return render_template('why-us.html')
+
+
+@main.route('/typo')
+def typo():
+    return render_template('typo.html')

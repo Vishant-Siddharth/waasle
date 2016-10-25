@@ -39,7 +39,7 @@ Waasle | Contact Us
 					    <form action="{{url_for('main.contact')}}" method='POST' enctype='multipart/form-data'>
 					    	{{ form.csrf_token }}
 							<div>
-						    	<h5><span>{{ form.name.label() }}</span></h5>
+						    	<span>{{ form.name.label() }}</span>
 						    	<span>{{ form.name() }}</span>
 						    </div>
 						    <div>
@@ -55,8 +55,11 @@ Waasle | Contact Us
 						    	<span>{{ form.description() }}</span>
 						    </div>
 						   <div>
+						   		<span>{{ form.recaptcha() }}</span>
+						   </div>
+							<div>
 						   		<span>{{ form.submit() }}</span>
-						  </div>
+						   </div>
 					    </form>
 
 				    </div>
@@ -64,4 +67,5 @@ Waasle | Contact Us
 		  </div>
 	  </div>
  </div>
+
 {% endblock %}

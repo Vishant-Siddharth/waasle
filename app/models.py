@@ -10,13 +10,20 @@ class User(UserMixin, db.Model):
     id = db.Column(db.Integer, primary_key=True)
     name = db.Column(db.String(64), nullable=False)
     email = db.Column(db.String(64), unique=True, nullable=False, index=True)
-    mob = db.Column(db.String(15), unique=True, nullable=False)
+    mob = db.Column(db.String(15), nullable=False)
     password = db.Column(db.String(256), nullable=False)
     confirmed = db.Column(db.Boolean, default=False)
     address_1 = db.Column(db.String(256), nullable=False)
     address_2 = db.Column(db.String(256), nullable=False)
-    city = db.Column(db.String, nullable=False)
+    city = db.Column(db.String(32), nullable=False)
     pincode = db.Column(db.Integer)
+
+    def __init__(self, **kwargs):
+        super(User, self).__init__(**kwargs)
+        mobile = Mobile()
+        mobile.number = self.mob
+        subscription = Subscription()
+        subscription.email = self.email
 
     def password_hash(self, password):      # Stores the value of password by hashing it first
         self.password = bcrypt.generate_password_hash(password)
@@ -82,7 +89,6 @@ class Contact(db.Model):
     name = db.Column(db.String(64), nullable=False)
     email = db.Column(db.String(64), nullable=False, index=True)
     mob = db.Column(db.String(15), nullable=False)
-    ques = db.Column(db.String(160), nullable=False)
     timestamp = db.Column(db.DateTime(), default=datetime.now)
     description = db.Column(db.Text())
 
@@ -107,11 +113,24 @@ class Order(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
     timestamp = db.Column(db.DateTime(), default=datetime.now)
 
+
 class Products(db.Model):
     __tablename__ = 'products'
     id = db.Column(db.Integer, primary_key=True)
     price = db.Column(db.Integer, nullable=False)
     type = db.Column(db.Integer, nullable=False)    #1:Wash & Fold, 2:Wash & Iron, 3:Dry cleaning
+
+
+class Subscription(db.Model):
+    __tablename__ = 'subscriptions'
+    id = db.Column(db.Integer, primary_key=True)
+    email = db.Column(db.String(64), nullable=False, unique=True)
+
+
+class Mobile(db.Model):
+    __tabename__ = 'mobiles'
+    id = db.Column(db.Integer, primary_key=True)
+    number = db.Column(db.String(16), nullable=False, unique=True)
 
 
 @login_manager.user_loader                  # callback function for login_manager

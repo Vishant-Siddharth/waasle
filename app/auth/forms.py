@@ -21,11 +21,11 @@ class RegistrationForm(FlaskForm):       # The first form to be filled by user
                                                      message='Minimum 8 length and maximum 20')])
     # To make the user enter at least 8 digit long password
     password_confirm = PasswordField('Confirm Password', validators=[DataRequired()])
-    gender = RadioField('Gender', choices=[('male', 'Male'),
-                                           ('female', 'Female'), ('other', 'Other')],
-                        validators=[DataRequired()])
-    terms = BooleanField('Term & Conditions.', validators=[DataRequired()])
+    address_1 = StringField('Address Line 1', validators=[DataRequired(), Length(4, 256), ])
+    address_2 = StringField('Address Line 2', validators=[DataRequired(), Length(4, 256), ])
+    city = StringField('City', validators=[DataRequired(), Length(4, 25), ])
     pincode = IntegerField('Pin Code', validators=[DataRequired()])
+    terms = BooleanField('Term & Conditions.', validators=[DataRequired()])
     recaptcha = RecaptchaField()
     submit = SubmitField('Get Your Purchase ID')
 
@@ -53,7 +53,7 @@ class PasswordResetRequestForm(FlaskForm):
     submit = SubmitField('Reset Password')
 
     def validate_email(self, field):
-        if User.query.filter_by(email_id=field.data).first() is None:
+        if User.query.filter_by(email=field.data).first() is None:
             raise ValidationError('Unknown email address.')
 
 
