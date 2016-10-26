@@ -1,0 +1,138 @@
+{% extends 'base.html' %}
+
+{% block title %}
+Waasle Laundry| Account
+{% endblock %}
+
+{% block content %}
+
+<!---->
+<div class="container">
+	  <ol class="breadcrumb">
+		  <li><a href="index.html">Home</a></li>
+		  <li class="active">Account</li>
+		 </ol>
+	 <div class="registration">
+		 <div class="registration_left">
+			 <h2>new user? <span> create an account </span></h2>
+			 <!-- [if IE] 
+				< link rel='stylesheet' type='text/css' href='ie.css'/>  
+			 [endif] -->  
+			  
+			 <!-- [if lt IE 7]>  
+				< link rel='stylesheet' type='text/css' href='ie6.css'/>  
+			 <! [endif] -->  
+			 <script>
+				(function() {
+			
+				// Create input element for testing
+				var inputs = document.createElement('input');
+				
+				// Create the supports object
+				var supports = {};
+				
+				supports.autofocus   = 'autofocus' in inputs;
+				supports.required    = 'required' in inputs;
+				supports.placeholder = 'placeholder' in inputs;
+			
+				// Fallback for autofocus attribute
+				if(!supports.autofocus) {
+					
+				}
+				
+				// Fallback for required attribute
+				if(!supports.required) {
+					
+				}
+			
+				// Fallback for placeholder attribute
+				if(!supports.placeholder) {
+					
+				}
+				
+				// Change text inside send button on submit
+				var send = document.getElementById('register-submit');
+				if(send) {
+					send.onclick = function () {
+						this.innerHTML = '...Sending';
+					}
+				}
+			
+			 })();
+			 </script>
+			 <div class="registration_form">
+			 <!-- Form -->
+				<form action="{{url_for('auth.login', type='register')}}" method='POST' enctype='multipart/form-data'>
+					{{ form_reg.csrf_token }}
+					<div>
+						<span>{{ form_reg.name(**{'placeholder': "Full Name", 'tabindex':"1"}) }}</span>
+					</div>
+					<div>
+						<span>{{ form_reg.email(**{	'placeholder': "Email Address", 'tabindex':"2"}) }}</span>
+					</div>
+					<div>
+						<span>{{ form_reg.number(**{'placeholder': "Mobile Number", 'tabindex':"3"}) }}</span>
+					</div>
+					<div>
+						<span>{{ form_reg.password(**{'placeholder': "Password", 'tabindex':"4"}) }}</span>
+					</div>
+					<div>
+						<span>{{ form_reg.password_confirm(**{'placeholder': "Retype Password", 'tabindex':"5"}) }}</span>
+					</div>					
+					<div>
+						<span>{{ form_reg.address_1(**{'placeholder': "Address Line 1", 'tabindex':"6"}) }}</span>
+					</div>
+					<div>
+						<span>{{ form_reg.address_2(**{'placeholder': "Address Line 2", 'tabindex':"7"}) }}</span>
+					</div>
+					<div>
+						<span>{{ form_reg.city(**{'placeholder': "City", 'tabindex':"8"}) }}</span>
+					</div>						
+					<div>
+						<span>{{ form_reg.pincode(**{'placeholder': "Pincode", 'tabindex':"8"}) }}</span>
+					</div>	
+					<div>
+						<span>{{ form_reg.terms(**{'tabindex':"9"}) }}</span>
+						<span>I agree the <a class="terms" href="{{ url_for('main.t_and_q') }}">{{ form_reg.terms.label() }}</a></span>
+					</div>
+					<div>
+						<span>{{ form_reg.recaptcha() }}</span>
+					</div>
+					<div>
+						<span>{{ form_reg.submit() }}</span>
+					</div>
+				</form>
+				<!-- /Form -->
+			 </div>
+		 </div>
+		 <div class="registration_left">
+			 <h2>existing user</h2>
+			 <div class="registration_form">
+			 <!-- Form -->
+				<form action="{{url_for('auth.login', type='login')}}" method='POST' enctype='multipart/form-data'>
+					{{ form_log.csrf_token }}
+					<div>
+						<span>{{ form_log.email(**{	'placeholder': "Email Address", 'tabindex':"10"}) }}</span>
+					</div>
+					<div>
+						<span>{{ form_log.password(**{	'placeholder': "Password", 'tabindex':"11"}) }}</span>
+					</div>						
+					<div>
+						<span>{{ form_log.remember_me(**{'tabindex': "12"}) }}</span>
+						<span>{{ form_log.remember_me.label() }}</span>
+					</div>
+					<div>
+						<span>{{ form_log.submit() }}</span>
+					</div>
+					<div class="forget">
+						<a href="{{ url_for('auth.password_reset_request') }}">Forgot Your Password</a>
+					</div>
+				</form>
+			 <!-- /Form -->
+			 </div>
+		 </div>
+		 <div class="clearfix"></div>
+	 </div>
+</div>
+<!---->
+{% endblock %}

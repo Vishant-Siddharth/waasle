@@ -17,19 +17,13 @@ class User(UserMixin, db.Model):
     address_2 = db.Column(db.String(256), nullable=False)
     city = db.Column(db.String(32), nullable=False)
     pincode = db.Column(db.Integer)
-
-    def __init__(self, **kwargs):
-        super(User, self).__init__(**kwargs)
-        mobile = Mobile()
-        mobile.number = self.mob
-        subscription = Subscription()
-        subscription.email = self.email
+    member_since = db.Column(db.DateTime(), default=datetime.now)
 
     def password_hash(self, password):      # Stores the value of password by hashing it first
         self.password = bcrypt.generate_password_hash(password)
 
     def verify_password(self, password):    # Checks if password given is correct or not
-        return bcrypt.check_password_hash(self.password_hash, password)
+        return bcrypt.check_password_hash(self.password, password)
 
     def generate_confirmation_token(self, expiration=86400):    # generating encrypted tokens
         # Using id of the user for expiration of 1 day
@@ -62,17 +56,17 @@ class User(UserMixin, db.Model):
         try:
             data = s.loads(token)               # loading id from token to verify
         except:
-            return False                        # for exceptions
+            return 'The link is expired. Please try again.'       # for exceptions
         if data.get('reset') != self.id:        # if not equal False
-            return False
+            return "Token couldn't be verified. Please try again."
         try:
             self.password_hash(new_password)    # creating hash for the new password
             db.session.add(self)                # adding new password
             db.session.commit()
-            return True
+            return 'True'
         except:
             db.session.rollback()               # if any exception rollback to previous stage
-            return False
+            return 'Something Went Wrong. Please try again'
 
 
 class AnonymousUser(AnonymousUserMixin):

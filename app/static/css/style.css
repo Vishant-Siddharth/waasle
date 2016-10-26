@@ -1819,7 +1819,6 @@ label {
 	outline: none;
 	color: #333333;
 	-webkit-appearance: none;
-	text-transform: capitalize;
 	background: #FFFFFF;
 	border: 1px solid rgb(231, 231, 231);
 	font-weight: normal;

@@ -1,6 +1,6 @@
-Dear {{ user.username }},
+Dear {{ user.name }},
 
-Welcome to BuyUcoin!
+Welcome to Waasle Laundry!
 
 To confirm your account please click on the following link:
 
@@ -8,6 +8,6 @@ To confirm your account please click on the following link:
 
 Sincerely,
 
-The BuyUcoin Team
+The Waasle Laundry Team
 
 Note: replies to this email address are not monitored.

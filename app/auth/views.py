@@ -2,7 +2,7 @@ from flask import render_template, redirect, request, url_for, flash
 from flask_login import login_user, logout_user, login_required, current_user
 from . import auth
 from .. import db
-from ..models import User
+from ..models import User, Mobile, Subscription
 from ..emails import send_email
 from .forms import LoginForm, RegistrationForm, ChangePasswordForm,\
     PasswordResetRequestForm, PasswordResetForm
@@ -34,41 +34,69 @@ def login():
     form_register = RegistrationForm()
     form_login = LoginForm()
     if not current_user.is_authenticated:
-        if form_login.validate_on_submit():
-            user = User.query.filter_by(email=form_login.email.data).first()
-            if user is not None and user.verify_password(form_login.password.data):
-                login_user(user, form_login.remember_me.data)
-                return redirect(request.args.get('next') or url_for('main.index'))
-            flash('Invalid username or password.')
-        if form_register.validate_on_submit():
-            try:
+        if request.args.get('type') == 'login':
+            if form_login.validate_on_submit():
+                user = User.query.filter_by(email=form_login.email.data).first()
+                if user is not None and user.verify_password(form_login.password.data):
+                    login_user(user, form_login.remember_me.data)
+                    return redirect(request.args.get('next') or url_for('main.index'))
+                else:
+                    flash('Invalid email or password')
+            else:
+                flash('Invalid email or password')
+        elif request.args.get('type') == 'register':
+            if form_register.validate_on_submit():
                 user = User()
-                user.name = form_register.name.data
-                user.email = form_register.email.data
-                user.mob = form_register.number.data
-                user.password = form_register.password.data
-                user.address_1 = form_register.address_1.data
-                user.address_2 = form_register.address_2.data
-                user.city = form_register.city.data
-                user.pincode = form_register.pincode.data
-                db.session.add(user)
-                db.session.commit()
-                token = user.generate_confirmation_token()
-                send_email(user.email, 'Confirm Your Account',
-                           'auth/email/confirm', user=user, token=token)
-                flash('A confirmation email has been sent to you by email.')
-                return redirect(url_for('auth.account'))
-            except:
-                db.session.rollback()
-                flash('Something Went Wrong. Please try again')
-        return render_template('auth/login.html')
+                try:
+                    if form_register.terms.data is True:
+                        user.name = form_register.name.data.title()
+                        user.email = form_register.email.data
+                        user.mob = form_register.number.data
+                        user.password_hash(form_register.password.data)
+                        user.address_1 = form_register.address_1.data
+                        user.address_2 = form_register.address_2.data
+                        user.city = form_register.city.data
+                        user.pincode = form_register.pincode.data
+                        db.session.add(user)
+                        db.session.commit()
+                        try:
+                            mobile = Mobile()
+                            mobile.number = user.mob
+                            subscription = Subscription()
+                            subscription.email = user.email
+                            db.session.add(mobile)
+                            db.session.add(subscription)
+                            db.seesion.commit()
+                        except:
+                            db.session.rollback()
+                        token = user.generate_confirmation_token()
+                        send_email(user.email, 'Confirm Your Account',
+                                   'auth/email/confirm', user=user, token=token)
+                        flash('A confirmation email has been sent to you by email.')
+                        return redirect(url_for('main.index'))
+                    else:
+                        flash('Please accept the terms and conditions.')
+                except :
+                    db.session.rollback()
+                    flash('Something Went Wrong. Please try again')
+            else:
+                for i, v in form_register.errors.items():
+                    flash(v[0])
+        return render_template('auth/login.html', form_reg=form_register, form_log=form_login)
     else:
         return render_template('auth/account.html')
 
 
 @auth.route('/account')
+@login_required
 def account():
     return render_template('auth/account.html')
+
+
+@auth.route('/orders')
+@login_required
+def orders():
+    return render_template('auth/orders.html')
 
 
 @auth.route('/logout')
@@ -102,13 +130,13 @@ def resend_confirmation():
 
 
 @auth.route('/change-password', methods=['GET', 'POST'])
-#@login_required
+@login_required
 def change_password():
     form = ChangePasswordForm()
     if form.validate_on_submit():
         if current_user.verify_password(form.old_password.data):
             try:
-                current_user.password = form.password.data
+                current_user.password_hash(form.password.data)
                 db.session.add(current_user)
                 db.session.commit()
                 flash('Your password has been updated.')
@@ -149,14 +177,18 @@ def password_reset(token):
     if not current_user.is_anonymous:
         return redirect(url_for('main.index'))
     form = PasswordResetForm()
+    print('hello')
     if form.validate_on_submit():
+        print('yello')
         user = User.query.filter_by(email=form.email.data).first()
         if user is None:
             return redirect(url_for('main.index'))
-        if user.reset_password(token, form.password.data):
+        tmp = user.reset_password(token, form.password.data)        # storing the result
+        if tmp == 'True':
             flash('Your password has been updated.')
             return redirect(url_for('auth.login'))
         else:
-            flash('Something Went Wrong. Please try again')
+            flash(tmp)
             return redirect(url_for('main.index'))
-    return render_template('auth/reset_password.html', form=form)
+    print(form.errors)
+    return render_template('auth/resetting_password.html', form=form, token=token)

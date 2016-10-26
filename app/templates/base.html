@@ -19,10 +19,10 @@
     {% endblock styles %}
 
     {% block scripts %}
-    <script src="../static/js/jquery.min.js"></script>
+    <script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
-    <script src="../static/js/simpleCart.min.js"> </script>
-    <script type="text/javascript" src="../static/js/memenu.js"></script>
+    <script src="{{url_for('static', filename='js/simpleCart.min.js')}}"> </script>
+    <script type="text/javascript" src="{{url_for('static', filename='js/memenu.js')}}"></script>
     <script>$(document).ready(function(){$(".memenu").memenu();});</script>
     {% endblock scripts %}
 
@@ -30,7 +30,7 @@
 <body>
     {% block header %}
 <!--header-->
-<script src="../static/js/responsiveslides.min.js"></script>
+<script src="{{url_for('static', filename='js/responsiveslides.min.js')}}"></script>
 <script>
     $(function () {
       $("#slider").responsiveSlides({
@@ -52,7 +52,7 @@
 			 <div class="top-nav">
 				<ul class="memenu skyblue"><li class="active"><a href= "{{ url_for('main.index') }}">Home</a></li>
 					{% if current_user.is_authenticated %}
-					<li class="grid"><a href="{{ url_for('main.orders') }}">Account</a>
+					<li class="grid"><a href="{{ url_for('auth.account') }}">Account</a>
 						<div class="mepanel">
 							<div class="row">
 								<div class="col1 me-one">
@@ -67,7 +67,7 @@
 						</div>
 					</li>
 					{% else %}
-					<li class="grid"><a href="{{ url_for('auth.account') }}">Register</a></li>
+					<li class="grid"><a href="{{ url_for('auth.login') }}">Login</a></li>
 					{% endif %}
 					<li class="grid"><a href="{{ url_for('main.pricing') }}">Pricing</a>
 						<div class="mepanel">
@@ -106,7 +106,7 @@
 <!---->
     {% endblock header %}
 	{% for message in get_flashed_messages() %}
-	<div class="alerts">
+	<div class="alerts" style="height: 60px; padding: .1em 0;">
 		{% if message in ['Something Went Wrong. Please try again',
 		'Invalid username or password.', 'Invalid password.',
 		'Entered email address is not registered'] %}
@@ -159,7 +159,7 @@
 			 <div class="col-md-3 ftr-grid">
 					<h3>More Info</h3>
 					<ul class="nav-bottom">
-						<li><a href="#">Login</a></li>
+						<li><a href="{{ url_for('auth.login') }}">Login</a></li>
 						<li><a href="{{ url_for('main.faq') }}">FAQ</a></li>
 						<li><a href="{{ url_for('main.contact') }}">Contact</a></li>
 						<li><a href="{{ url_for('main.blog') }}">Blog</a></li>

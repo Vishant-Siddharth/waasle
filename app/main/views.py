@@ -21,7 +21,7 @@ def contact():
     if form.validate_on_submit():
         user = Contact()
         try:
-            user.name = form.name.data
+            user.name = form.name.data.title()
             user.email = form.email.data
             user.mob = form.number.data
             user.description = form.description.data
@@ -73,3 +73,8 @@ def why_us():
 @main.route('/typo')
 def typo():
     return render_template('typo.html')
+
+
+@main.route('/terms-&-conditions')
+def t_and_q():
+    return 'terms-&-conditions'

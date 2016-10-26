@@ -27,7 +27,7 @@ class RegistrationForm(FlaskForm):       # The first form to be filled by user
     pincode = IntegerField('Pin Code', validators=[DataRequired()])
     terms = BooleanField('Term & Conditions.', validators=[DataRequired()])
     recaptcha = RecaptchaField()
-    submit = SubmitField('Get Your Purchase ID')
+    submit = SubmitField('Create Your Account')
 
 
 class LoginForm(FlaskForm):
@@ -66,5 +66,5 @@ class PasswordResetForm(FlaskForm):
     submit = SubmitField('Reset Password')
 
     def validate_email(self, field):
-        if User.query.filter_by(email_id=field.data).first() is None:
+        if User.query.filter_by(email=field.data).first() is None:
             raise ValidationError('Unknown email address.')
