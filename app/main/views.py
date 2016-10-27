@@ -1,8 +1,20 @@
 from flask import render_template, session, redirect, url_for, request, flash
 from ..main import main
-from .forms import QueryForm
-from ..models import User, Contact
+from .forms import QueryForm, SubscriptionForm
+from ..models import Contact, Subscription
 from app import db
+
+
+@main.context_processor         # to add variables in template scope
+def include_template_variables():
+    return {'form_sub': SubscriptionForm()}
+
+
+@main.context_processor         # to add variables in template scope
+def include_template_function():
+    def typ(x):
+        return type(x)
+    return dict(type=typ)
 
 
 @main.route('/', methods=['GET', 'POST'])
@@ -12,7 +24,7 @@ def index():
 
 @main.route('/pricing', methods=['GET', 'POST'])
 def pricing():
-    return render_template('base.html')
+    return render_template('pricing.html')
 
 
 @main.route('/contact', methods=['GET', 'POST'])
@@ -78,3 +90,54 @@ def typo():
 @main.route('/terms-&-conditions')
 def t_and_q():
     return 'terms-&-conditions'
+
+
+@main.route('/subscribe', methods=['Get', 'POST'])
+def subscribe():
+    if request.method == 'GET':
+        return redirect(url_for('main.index'))
+    else:
+        form_sub = SubscriptionForm()
+        if form_sub.validate_on_submit():
+            sub = Subscription()
+            try:
+                sub.email = form_sub.email.data
+                db.session.add(sub)
+                db.session.commit()
+                flash("Thank you for subscribing to us. You'll get our latest offers right in your email box.")
+                return redirect(url_for('main.index'))
+            except:
+                db.session.rollback()
+                flash("You are already subscribed to us.")
+        else:
+            for i, v in form_sub.errors.items():
+                flash(v[0])
+        return redirect(url_for('main.index'))
+
+
+@main.route('/unsubscribe/<token>')         # Will implement it afterwards
+def unsubscribe():
+    if request.method == 'GET':
+        return redirect(url_for('main.index'))
+    else:
+        form_sub = SubscriptionForm()
+        if form_sub.validate_on_submit():
+            sub = Subscription()
+            try:
+                sub.email = form_sub.email.data
+                db.session.add(sub)
+                db.session.commit()
+                flash("Thank you for subscribing to us. You'll get our latest offers right in your email box.")
+                return redirect(url_for('main.index'))
+            except:
+                db.session.rollback()
+                flash("You are already subscribed to us.")
+        else:
+            for i, v in form_sub.errors.items():
+                flash(v[0])
+        return redirect(url_for('main.index'))
+
+
+@main.route('/base')
+def base():
+    return render_template('base.html')

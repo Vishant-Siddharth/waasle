@@ -1,25 +1,34 @@
-from flask import render_template, redirect, request, url_for, flash
+from flask import render_template, redirect, request, url_for, flash, g
 from flask_login import login_user, logout_user, login_required, current_user
 from . import auth
 from .. import db
-from ..models import User, Mobile, Subscription
+from ..models import User, Mobile
 from ..emails import send_email
+from ..decorators import only_confirmed
 from .forms import LoginForm, RegistrationForm, ChangePasswordForm,\
-    PasswordResetRequestForm, PasswordResetForm
+    PasswordResetRequestForm, PasswordResetForm, SubscriptionForm
 
-
+'''
 @auth.before_app_request        # this is run every time a request is made to the auth app
 def before_request():
     if current_user.is_authenticated:       # if the current_user is authenticate
         if not current_user.confirmed \
-                and request.endpoint[:5] != 'auth.':        # endpoint = auth.<function_name>
+                and request.endpoint[:5] != 'auth.' \
+                and request.endpoint != 'static':        # endpoint = auth.<function_name>
             return redirect(url_for('auth.unconfirmed'))
+'''
 
 
 @auth.context_processor         # to add variables in template scope
 def include_template_variables():
-    return {'variable': 'value'}
-    pass
+    return {'form_sub': SubscriptionForm()}
+
+
+@auth.context_processor         # to add variables in template scope
+def include_template_function():
+    def length(x):
+        return len(x)
+    return dict(len=length)
 
 
 @auth.route('/unconfirmed')
@@ -84,7 +93,7 @@ def login():
                     flash(v[0])
         return render_template('auth/login.html', form_reg=form_register, form_log=form_login)
     else:
-        return render_template('auth/account.html')
+        return redirect(url_for('auth.account'))
 
 
 @auth.route('/account')
@@ -95,6 +104,7 @@ def account():
 
 @auth.route('/orders')
 @login_required
+@only_confirmed
 def orders():
     return render_template('auth/orders.html')
 
@@ -133,19 +143,23 @@ def resend_confirmation():
 @login_required
 def change_password():
     form = ChangePasswordForm()
-    if form.validate_on_submit():
-        if current_user.verify_password(form.old_password.data):
-            try:
-                current_user.password_hash(form.password.data)
-                db.session.add(current_user)
-                db.session.commit()
-                flash('Your password has been updated.')
-            except:
-                db.session.rollback()
-                flash('Something Went Wrong. Please try again')
-            return redirect(url_for('main.index'))
+    if request.method == 'POST':
+        if form.validate_on_submit():
+            if current_user.verify_password(form.old_password.data):
+                try:
+                    current_user.password_hash(form.password.data)
+                    db.session.add(current_user)
+                    db.session.commit()
+                    flash('Your password has been updated.')
+                except:
+                    db.session.rollback()
+                    flash('Something Went Wrong. Please try again')
+                return redirect(url_for('main.index'))
+            else:
+                flash('Invalid password.')
         else:
-            flash('Invalid password.')
+            for i, v in form.errors.items():
+                flash(v[0])
     return render_template("auth/change_password.html", form=form)
 
 
@@ -177,9 +191,7 @@ def password_reset(token):
     if not current_user.is_anonymous:
         return redirect(url_for('main.index'))
     form = PasswordResetForm()
-    print('hello')
     if form.validate_on_submit():
-        print('yello')
         user = User.query.filter_by(email=form.email.data).first()
         if user is None:
             return redirect(url_for('main.index'))
@@ -190,5 +202,7 @@ def password_reset(token):
         else:
             flash(tmp)
             return redirect(url_for('main.index'))
-    print(form.errors)
+    else:
+        for i, v in form.errors.items():
+            flash(v[0])
     return render_template('auth/resetting_password.html', form=form, token=token)

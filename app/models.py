@@ -5,6 +5,12 @@ from flask_login import UserMixin, AnonymousUserMixin
 from itsdangerous import TimedJSONWebSignatureSerializer as Serializer
 
 
+relationship_table = db.Table('relationship_table',
+                              db.Column('order_id', db.Integer, db.ForeignKey('orders.id'), nullable=False),
+                              db.Column('product_id', db.Integer, db.ForeignKey('products.id'), nullable=False),
+                              db.PrimaryKeyConstraint('order_id', 'product_id'))
+
+
 class User(UserMixin, db.Model):
     __tablename__ = 'users'
     id = db.Column(db.Integer, primary_key=True)
@@ -18,6 +24,7 @@ class User(UserMixin, db.Model):
     city = db.Column(db.String(32), nullable=False)
     pincode = db.Column(db.Integer)
     member_since = db.Column(db.DateTime(), default=datetime.now)
+    orders = db.relationship('Order', backref='user', lazy='dynamic')
 
     def password_hash(self, password):      # Stores the value of password by hashing it first
         self.password = bcrypt.generate_password_hash(password)
@@ -87,7 +94,7 @@ class Contact(db.Model):
     description = db.Column(db.Text())
 
 
-class Transactions(db.Model):
+class Transaction(db.Model):
     __tablename__ = 'tranactions'
     id = db.Column(db.Integer, primary_key=True)
     acc_no = db.Column(db.String(20), nullable=False)
@@ -104,11 +111,14 @@ class Transactions(db.Model):
 class Order(db.Model):
     __tablename__ = 'orders'
     id = db.Column(db.Integer, primary_key=True)
-    user_id = db.Column(db.Integer, db.ForeignKey('users.id'))
+    user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     timestamp = db.Column(db.DateTime(), default=datetime.now)
+    products = db.relationship('Product', secondary=relationship_table, backref='orders')
+    ratings = db.Column(db.Integer)
+    complete = db.Column(db.Boolean, default=False)
 
 
-class Products(db.Model):
+class Product(db.Model):
     __tablename__ = 'products'
     id = db.Column(db.Integer, primary_key=True)
     price = db.Column(db.Integer, nullable=False)

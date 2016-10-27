@@ -22,7 +22,7 @@
     <script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
     <script type="application/x-javascript"> addEventListener("load", function() { setTimeout(hideURLbar, 0); }, false); function hideURLbar(){ window.scrollTo(0,1); } </script>
     <script src="{{url_for('static', filename='js/simpleCart.min.js')}}"> </script>
-    <script type="text/javascript" src="{{url_for('static', filename='js/memenu.js')}}"></script>
+    <script src="{{url_for('static', filename='js/memenu.js')}}" type="text/javascript"></script>
     <script>$(document).ready(function(){$(".memenu").memenu();});</script>
     {% endblock scripts %}
 
@@ -58,8 +58,8 @@
 								<div class="col1 me-one">
                                     <ul>
                                     <li><a href="{{ url_for('auth.change_password') }}"><h5>Change Password</h5></a></li>
-                                    <li><a href="{{ url_for('auth.logout') }}"><h5>Log Out</h5></a></li>
-                                    <li><a href="{{ url_for('auth.orders') }}"><h5>Orders</h5></a></li>
+										<li><a href="{{ url_for('auth.orders') }}"><h5>Orders</h5></a></li>
+										<li><a href="{{ url_for('auth.logout') }}"><h5>Log Out</h5></a></li>
                                     </ul>
                                 </div>
 
@@ -131,9 +131,10 @@
 <div class="subscribe">
 	 <div class="container">
 		 <h3>Newsletter</h3>
-		 <form>
-			 <input type="text" class="text" value="Email" onfocus="this.value = '';" onblur="if (this.value == '') {this.value = 'Email';}">
-			 <input type="submit" value="Subscribe">
+		 <form action="{{ url_for('main.subscribe') }}" method='POST' enctype='multipart/form-data'>
+			 {{ form_sub.csrf_token }}
+			 {{ form_sub.email(**{'type': "text", 'class': "text", 'value': "Email", 'onfocus': "this.value = '';", 'onblur': "if (this.value == '') {this.value = 'Email';}"}) }}
+			 {{ form_sub.submit() }}
 		 </form>
 	 </div>
 </div>

@@ -2,13 +2,14 @@
 
 import os
 from app import create_app, db
-from app.models import User
+from app.models import User, Order, Contact, Product, Subscription, Mobile, Transaction
 from flask_script import Manager, Shell
 from flask_migrate import Migrate, MigrateCommand
 
 
 def make_shell_context():
-    return dict(app=app, db=db, User=User)
+    return dict(app=app, db=db, User=User, Order=Order, Contact=Contact, Product=Product,
+                Subscription=Subscription, Mobile=Mobile, Transaction=Transaction)
 
 
 app = create_app(os.getenv('FLASK_CONFIG') or 'default')

@@ -4,10 +4,52 @@
 Waasle | Contact Us
 {% endblock %}
 
+{%block styles %}
+{{super()}}
+	<link href="{{ url_for('static', filename='css/form.css') }}" rel="stylesheet" type="text/css" media="all" />
+{% endblock styles %}
+
 {% block content %}
 
 <!---->
-
-
-
+<div class="pages">
+	  <div class="container">
+		 <ol class="breadcrumb">
+		  <li><a href="{{ url_for('main.index') }}">Home</a></li>
+		  <li class="active">Contact</li>
+		 </ol>
+			<!--start account-->
+            <div class="rsidebar span_1_of_left">
+				 <section  class="sky-form">
+					 <div class="product_right">
+						 <h4 class="m_2"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Account</h4>
+						 <div class="tab1">
+							 <ul class="place">
+								 <li class="sort"><a href="{{ url_for('auth.change_password') }}">Change Password</a></li>
+									<div class="clearfix"> </div>
+							  </ul>
+					      </div>
+						  <div class="tab2">
+							 <ul class="place">
+								 <li class="sort"><a href="{{ url_for('auth.orders') }}">Your Orders</a></li>
+									<div class="clearfix"> </div>
+							  </ul>
+					      </div>
+						  <div class="tab3">
+							 <ul class="place">
+								 <li class="sort"><a href="{{ url_for('main.pricing') }}">Place Order</a></li>
+									<div class="clearfix"> </div>
+							  </ul>
+					      </div>
+                         <div class="tab4">
+							 <ul class="place">
+								 <li class="sort"><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+									<div class="clearfix"> </div>
+							  </ul>
+					      </div>
+                     </div>
+                 </section>
+            </div>
+      </div>
+</div>
 {% endblock %}

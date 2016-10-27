@@ -42,7 +42,8 @@ class ChangePasswordForm(FlaskForm):
     old_password = PasswordField('Old password', validators=[DataRequired()])
     password = PasswordField('New password', validators=[
         DataRequired(), EqualTo('password2', message='Passwords must match'), Length(8, 20,
-                        message='Minimum 8 length and maximum 20')])
+                                                                                     message=
+                                                                                     'Minimum 8 length and maximum 20')])
     password2 = PasswordField('Confirm new password', validators=[DataRequired()])
     submit = SubmitField('Update Password')
 
@@ -68,3 +69,8 @@ class PasswordResetForm(FlaskForm):
     def validate_email(self, field):
         if User.query.filter_by(email=field.data).first() is None:
             raise ValidationError('Unknown email address.')
+
+
+class SubscriptionForm(FlaskForm):
+    email = StringField('Email', validators=[Email(), Length(1, 35)])
+    submit = SubmitField('Subscribe')

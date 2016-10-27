@@ -16,6 +16,9 @@ login_manager.session_protection = 'strong'
 login_manager.login_view = 'auth.login'     # Default login page, after any bad requests
 
 
+import app.models
+
+
 def create_app(config_name):
     app = Flask(__name__)
     app.config.from_object(config.config[config_name])
