@@ -7,7 +7,7 @@ from app import db
 
 @main.context_processor         # to add variables in template scope
 def include_template_variables():
-    return {'form_sub': SubscriptionForm()}
+    return {'form_sub': SubscriptionForm(), 'form_dev': 'helo'}
 
 
 @main.context_processor         # to add variables in template scope
@@ -25,6 +25,11 @@ def index():
 @main.route('/pricing', methods=['GET', 'POST'])
 def pricing():
     return render_template('pricing.html')
+
+
+@main.route('/book-now', methods=['GET', 'POST'])
+def book_now():
+    return render_template('book_now.html')
 
 
 @main.route('/contact', methods=['GET', 'POST'])
