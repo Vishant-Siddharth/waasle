@@ -90,7 +90,7 @@ h1.b1,h2.b2,h3.b3 {
 .box_1{
   float: right;
   width: 15%;
-  margin-top:2em;
+  margin-top:1.5em;
 }
 .box_1 h3{
   color: rgba(113, 111, 111, 1);
@@ -606,7 +606,7 @@ background-position:-167px -36px;
 }
 /*--product--*/
 .product {
-    padding:4em 0 3em;
+    padding:4em 0 0em;
 }
 .product-model-sec {
     margin: 4em 0 0 0;
