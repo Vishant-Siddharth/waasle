@@ -1,13 +1,13 @@
 from flask import render_template, session, redirect, url_for, request, flash
 from ..main import main
-from .forms import QueryForm, SubscriptionForm
-from ..models import Contact, Subscription
+from .forms import QueryForm, SubscriptionForm, MobileForm
+from ..models import Contact, Subscription, Mobile
 from app import db
 
 
 @main.context_processor         # to add variables in template scope
 def include_template_variables():
-    return {'form_sub': SubscriptionForm(), 'form_dev': 'helo'}
+    return {'form_sub': SubscriptionForm(), 'form_mob': MobileForm(), 'w_f': 49, 'w_i': 59, 'dc': 79}
 
 
 @main.context_processor         # to add variables in template scope
@@ -120,6 +120,33 @@ def subscribe():
         return redirect(url_for('main.index'))
 
 
+@main.route('/app', methods=['Get', 'POST'])
+def mobile_app():
+    if request.method == 'GET':
+        return redirect(url_for('main.index'))
+    else:
+        form_mob = MobileForm()
+        if form_mob.validate_on_submit():
+            mob = Mobile()
+            try:
+                mob.number = form_mob.number.data
+                db.session.add(mob)
+                db.session.commit()
+                return redirect(url_for('main.app_link'))
+            except:
+                db.session.rollback()
+                return redirect(url_for('main.app_link'))
+        else:
+            for i, v in form_mob.errors.items():
+                flash(v[0])
+        return redirect(url_for('main.index'))
+
+
+@main.route('/app/get-app', methods=['Get', 'POST'])
+def app_link():
+    return redirect("http://bit.ly/1K38IWh")
+
+
 @main.route('/unsubscribe/<token>')         # Will implement it afterwards
 def unsubscribe():
     if request.method == 'GET':
@@ -143,6 +170,11 @@ def unsubscribe():
         return redirect(url_for('main.index'))
 
 
-@main.route('/base')
+@main.route('/single')
 def base():
-    return render_template('base.html')
+    return render_template('single.html')
+
+
+@main.route('/404')
+def page_not_found():
+    return render_template('404.html')

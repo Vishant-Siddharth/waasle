@@ -139,6 +139,13 @@
 			 {{ form_sub.email(**{'type': "text", 'class': "text", 'value': "Email", 'onfocus': "this.value = '';", 'onblur': "if (this.value == '') {this.value = 'Email';}"}) }}
 			 {{ form_sub.submit() }}
 		 </form>
+		 <br>
+		 <h3>Download our mobile app</h3>
+		 <form action="{{ url_for('main.mobile_app') }}" method='POST' enctype='multipart/form-data'>
+			 {{ form_mob.csrf_token }}
+			 {{ form_mob.number(**{'type': "text", 'class': "text", 'value': "Enter 10 digit mobile no.", 'onfocus': "this.value = '';", 'onblur': "if (this.value == '') {this.value = 'Enter 10 digit mobile no.';}"}) }}
+			 {{ form_mob.submit() }}
+		 </form>
 	 </div>
 </div>
 <!---->

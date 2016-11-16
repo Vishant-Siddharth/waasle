@@ -16,3 +16,8 @@ class QueryForm(FlaskForm):
 class SubscriptionForm(FlaskForm):
     email = StringField('Email', validators=[Email(), Length(1, 35)])
     submit = SubmitField('Subscribe')
+
+
+class MobileForm(FlaskForm):
+    number = StringField('Phone number', validators=[DataRequired(), Length(8, 15, message='Length 8-15')])
+    submit = SubmitField('Get App')

@@ -7,6 +7,7 @@ from ..emails import send_email
 from ..decorators import only_confirmed
 from .forms import LoginForm, RegistrationForm, ChangePasswordForm,\
     PasswordResetRequestForm, PasswordResetForm, SubscriptionForm
+from ..main.forms import MobileForm
 
 '''
 @auth.before_app_request        # this is run every time a request is made to the auth app
@@ -21,7 +22,7 @@ def before_request():
 
 @auth.context_processor         # to add variables in template scope
 def include_template_variables():
-    return {'form_sub': SubscriptionForm()}
+    return {'form_sub': SubscriptionForm(), 'form_mob': MobileForm()}
 
 
 @auth.context_processor         # to add variables in template scope
