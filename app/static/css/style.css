@@ -1202,7 +1202,7 @@ position: absolute;
    font-family: 'Dosis-Medium';
 }
 p.para {
-  font-size: 1em;
+  font-size: 1.2em;
   color:#4e5050;
   line-height: 1.8em;
 }
@@ -1219,7 +1219,7 @@ p.para {
 .prdt-info-grid ul li{
 	display:block;
 	color:#4e5050;
-	font-size:0.9em;
+	font-size:1.1em;
 	padding:2px 0;
 }
 .check p {
