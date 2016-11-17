@@ -173,8 +173,3 @@ def unsubscribe():
 @main.route('/single')
 def base():
     return render_template('single.html')
-
-
-@main.route('/404')
-def page_not_found():
-    return render_template('404.html')

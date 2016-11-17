@@ -1,15 +1,21 @@
-{% extends 'base.html' %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>
+        Waasle Laundry | A Full Laundry Services | Page Not Found
+    </title>
 
-{% block title %}
-Waasle Laundry | Page not found.
-{% endblock %}
+	<link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
+	<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
+    <link href="{{ url_for('static', filename='css/memenu.css') }}" rel="stylesheet" type="text/css" media="all" />
 
-{% block content %}
-
+</head>
+<body>
 <p>&nbsp;</p>
 <!-- Main -->
 <div class="container"><img src="{{url_for('static', filename='images/404.jpg')}}" alt="Waasle Laundry" align="middle" />
-<li>
+<li style="list-style-type: None;">
     <div class="Buttons">
         <h2 class="b2">
             <a href="{{url_for('main.index')}}"><span class="label label-primary">Visit homepage</span></a>
@@ -17,4 +23,5 @@ Waasle Laundry | Page not found.
         </div>
         <a class="button special" href=""></a></li>
 </div>
-{% endblock %}
+</body>
+</html>
