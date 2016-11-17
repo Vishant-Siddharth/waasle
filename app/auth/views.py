@@ -103,6 +103,14 @@ def account():
     return render_template('auth/account.html')
 
 
+@auth.route('/book-now', methods=['GET', 'POST'])
+@login_required
+@only_confirmed
+def book_now():
+
+    return render_template('book_now.html')
+
+
 @auth.route('/orders')
 @login_required
 @only_confirmed

@@ -1,5 +1,6 @@
 from flask import render_template, session, redirect, url_for, request, flash
 from ..main import main
+from flask_login import current_user
 from .forms import QueryForm, SubscriptionForm, MobileForm
 from ..models import Contact, Subscription, Mobile
 from app import db
@@ -25,11 +26,6 @@ def index():
 @main.route('/pricing', methods=['GET', 'POST'])
 def pricing():
     return render_template('pricing.html')
-
-
-@main.route('/book-now', methods=['GET', 'POST'])
-def book_now():
-    return render_template('book_now.html')
 
 
 @main.route('/contact', methods=['GET', 'POST'])
