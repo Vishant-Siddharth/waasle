@@ -9,8 +9,7 @@ class QueryForm(FlaskForm):
     email = StringField('Email', validators=[Email(), Length(1, 35)])
     number = StringField('Phone number', validators=[DataRequired(), Length(8, 15, message='Invalid Mobile No.')])
     description = TextAreaField('Description', validators=[Optional()])
-    recaptcha = RecaptchaField(public_key="6LeMdw8UAAAAAOJZcdahKaUtJS50O1UB-LrwfKXO",
-                               private_key="6LeMdw8UAAAAAF2fRlBLcNSSxv-sLaxCg6WVnzZt", secure=True)
+    recaptcha = RecaptchaField()
     submit = SubmitField('Send your query')
 
 
