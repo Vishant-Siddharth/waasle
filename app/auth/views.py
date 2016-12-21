@@ -107,7 +107,7 @@ def account():
 # @login_required
 # @only_confirmed
 def book_now():
-    return render_template('book_now.html')
+    return render_template('auth/book_now.html')
 
 
 @auth.route('/orders')
