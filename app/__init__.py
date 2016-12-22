@@ -1,3 +1,4 @@
+import os
 from flask import Flask
 from flask_mail import Mail         # To send mails, wrapper around smtplib module
 from flask_moment import Moment     # for date and time using jquery
@@ -36,4 +37,4 @@ def create_app(config_name):
     return app
 
 
-app = create_app('default')
+app = create_app(os.environ.get('CONFIG_NAME'))
