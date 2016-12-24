@@ -3,19 +3,19 @@ basedir = os.path.abspath(os.path.dirname(__file__))
 
 
 class Config:
-    SECRET_KEY = os.environ.get('SECRET_KEY') or 'hard to guess string'
+    SECRET_KEY = "71a3fc447e89f4eb4abf1edb7124387f223d529969e6f43b243d92219e38584bbe95b6c2f6d8b8c17adda013be09160c"
     SQLALCHEMY_COMMIT_ON_TEARDOWN = False       # Enables auto committing
     SQLALCHEMY_TRACK_MODIFICATIONS = False      # For before requests
     FLASKY_MAIL_SUBJECT_PREFIX = ''
     FLASKY_MAIL_SENDER = 'Waasle Team <mail-noreply@waasle.com>'
-    FLASKY_ADMIN = os.environ.get('FLASKY_ADMIN')
-    MAIL_SERVER = os.environ.get('MAIL_SERVER')
+    FLASKY_ADMIN = "Devesh Aggrawal"
+    MAIL_SERVER = "smtp.zoho.com"
     MAIL_PORT = 587
     MAIL_USE_TLS = True
-    MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
-    MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-    RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_PUBLIC_KEY')
-    RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_PRIVATE_KEY')
+    MAIL_USERNAME = "mail-noreply@waasle.com"
+    MAIL_PASSWORD = "noreplywaasle"
+    RECAPTCHA_PUBLIC_KEY = "6LeMdw8UAAAAAOJZcdahKaUtJS50O1UB-LrwfKXO"
+    RECAPTCHA_PRIVATE_KEY = "6LeMdw8UAAAAAF2fRlBLcNSSxv-sLaxCg6WVnzZt"
 
     @staticmethod
     def init_app(app): 
@@ -24,7 +24,7 @@ class Config:
 
 class DevelopmentConfig(Config):
     DEBUG = True
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DEV_DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:mysql@127.0.0.1:3306/waasle"
 
 
 class TestingConfig(Config):
@@ -33,7 +33,7 @@ class TestingConfig(Config):
 
 
 class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL')
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:mysqlroot@127.0.0.1:3306/waasle"
 
 
 config = {

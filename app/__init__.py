@@ -1,4 +1,3 @@
-import os
 from flask import Flask
 from flask_mail import Mail         # To send mails, wrapper around smtplib module
 from flask_moment import Moment     # for date and time using jquery
