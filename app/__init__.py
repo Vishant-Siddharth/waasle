@@ -38,3 +38,4 @@ def create_app(config_name):
 
 
 app = create_app('production')
+
