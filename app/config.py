@@ -14,8 +14,8 @@ class Config:
     MAIL_USE_TLS = True
     MAIL_USERNAME = os.environ.get('MAIL_USERNAME')
     MAIL_PASSWORD = os.environ.get('MAIL_PASSWORD')
-    RECAPTCHA_PUBLIC_KEY = os.environ.get('RECAPTCHA_PUBLIC_KEY')
-    RECAPTCHA_PRIVATE_KEY = os.environ.get('RECAPTCHA_PRIVATE_KEY')
+    RECAPTCHA_PUBLIC_KEY = "6LeMdw8UAAAAAOJZcdahKaUtJS50O1UB-LrwfKXO"
+    RECAPTCHA_PRIVATE_KEY = "6LeMdw8UAAAAAF2fRlBLcNSSxv-sLaxCg6WVnzZt"
 
     @staticmethod
     def init_app(app): 
