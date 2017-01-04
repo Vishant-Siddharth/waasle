@@ -33,7 +33,7 @@ class TestingConfig(Config):
 
 
 class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:mysqlroot@127.0.0.1:3306/waasle"
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:waaslemysqlroot@127.0.0.1:3306/waasle"
 
 
 config = {
