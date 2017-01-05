@@ -95,7 +95,7 @@
 					<div class="total">
 						<div class="Buttons" style="padding: .1em 0;">
 							<h1 class="b1" >
-								<a href="{{ url_for('auth.book_now') }}"><span class="label label-danger" style="font-size: 65%; background-color: #ed645c;">Book Now</span></a>
+								<a href="{{ url_for('auth.book_now') }}"><span class="label label-danger" style="font-size: 65%; background-color: #00c0f2;">Book Now</span></a>
 							</h1>
 						</div>
 					</div>
@@ -134,13 +134,6 @@
 <!---->
 <div class="subscribe">
 	 <div class="container">
-		 <h3>Newsletter</h3>
-		 <form action="{{ url_for('main.subscribe') }}" method='POST' enctype='multipart/form-data'>
-			 {{ form_sub.csrf_token }}
-			 {{ form_sub.email(**{'type': "text", 'class': "text", 'value': "Email", 'onfocus': "this.value = '';", 'onblur': "if (this.value == '') {this.value = 'Email';}"}) }}
-			 {{ form_sub.submit() }}
-		 </form>
-		 <br>
 		 <h3>Download our mobile app</h3>
 		 <form action="{{ url_for('main.mobile_app') }}" method='POST' enctype='multipart/form-data'>
 			 {{ form_mob.csrf_token }}
