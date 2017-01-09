@@ -2,7 +2,7 @@ from flask import render_template, redirect, request, url_for, flash, g
 from flask_login import login_user, logout_user, login_required, current_user
 from . import auth
 from .. import db
-from ..models import User, Mobile
+from ..models import User, Mobile, Subscription
 from ..emails import send_email
 from ..decorators import only_confirmed
 from .forms import LoginForm, RegistrationForm, ChangePasswordForm,\
