@@ -5,7 +5,7 @@ License: Creative Commons Attribution 3.0 Unported
 License URL: http://creativecommons.org/licenses/by/3.0/
 --*/
 body{
-	background:#fff;
+	background:#b3e5fc;
 	font-family: 'Lato', sans-serif;
 }
 body a{
@@ -33,6 +33,10 @@ a:hover, a:focus {
 @font-face {
    font-family: 'Dosis-Medium';
    src: url(../fonts/Dosis-Medium.ttf) format('truetype');
+}
+@font-face {
+   font-family: 'Pacifico';
+   src: url(../fonts/Pacifico.ttf) format('truetype');
 }
 ul{
 	padding: 0;
@@ -124,8 +128,8 @@ h1.b1,h2.b2,h3.b3 {
     font-weight: 100;
     padding: 0.5em 1.3em;
 	text-decoration:none;
-background:#ed645c;	
-display:inline-block;
+    background:#ed645c;
+    display:inline-block;
 }
 .logo h1 a:hover{
 	text-decoration:none;
@@ -134,7 +138,7 @@ display:inline-block;
 	float:left;	
 }
  .top-nav {
-  width: 42%;
+  width: 100%;
   display: block;
   float: left;
 }
@@ -215,6 +219,7 @@ display:inline-block;
 	padding:1em 0 1.5em 0;
 }
 .callbacks_container {
+  margin-top:50px;
   position: relative;
   width: 100%;
 }
@@ -351,6 +356,7 @@ span.disc {
 /*----*/
 .offers{
 	padding-bottom:3em;
+
 }
 .offers h3{
 	text-align:center;
@@ -421,7 +427,7 @@ span.disc {
 	display:block;
 	font-size:2.2em;
 	font-family: 'Dosis-Medium';
-	color:#ed645c;
+	color:#00c0f2;
 	margin-top:0.0em;
 }
 .ofr-pic-info2  span{
@@ -463,7 +469,7 @@ span.disc {
 }
 /*----subscribe---*/
 .subscribe{
-	background:#ed645c;
+	background:#00c0f2;
 	text-align:center;
 	padding:2em 0;
 }
@@ -547,7 +553,7 @@ ul.nav-bottom li:nth-child(1){
 }
 .copywrite{
 	padding:1em 0;
-	background:#7D7D7D;
+	background:#004f6a;
 }
 .copy{
 	float:left;
@@ -1278,6 +1284,8 @@ h3.ghj {
 .headdings, .Buttons, .progress-bars, .alerts, .bread-crumbs, .pagenatin, .appearance, .distracted {
 	padding: 2em 0;
 }
+
+
 .breadcrumb {
 	margin:3em 0 2em!important;
 }
@@ -1401,6 +1409,8 @@ h3.ghj {
 	font-size:1.5em;
 	margin-bottom:1em;
 }
+
+
 .cart-sec{
 	margin-bottom:3em;
 }
@@ -1812,6 +1822,8 @@ label {
 	margin-bottom: 0;
 	font-weight: normal;
 }
+
+
 .registration_form input[type="text"],.registration_form input[type="email"],.registration_form input[type="tel"],.registration_form input[type="password"]{
 	padding: 8px;
 	display: block;
@@ -1864,9 +1876,7 @@ label {
 @media (max-width: 1440px){
 }
 @media (max-width: 1366px){
-.top-nav {
-    width: 44%;
-}
+
 }
 @media (max-width: 1280px){
 .top-nav {
@@ -2494,3 +2504,13 @@ input.item_add.items {
     width: 61%;
 }
 }
+
+.ul{
+    margin:0px;
+    padding:0px;
+    width:100%;
+    list-style:none;
+    display:inline-block;
+    position:relative;
+    font-family:Calibri,Arial;font-size:15px
+ }

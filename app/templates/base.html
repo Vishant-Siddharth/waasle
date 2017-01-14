@@ -16,7 +16,9 @@
 	<link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
 	<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
     <link href="{{ url_for('static', filename='css/memenu.css') }}" rel="stylesheet" type="text/css" media="all" />
-    {% endblock styles %}
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Tangerine">
+	{% endblock styles %}
 
     {% block scripts %}
     <script src="{{url_for('static', filename='js/jquery.min.js')}}"></script>
@@ -44,67 +46,67 @@
   </script>
 
 <div class="header-top">
-	 <div class="header-bottom">
-				<div class="logo">
-					<h1><a href="{{ url_for('main.index') }}">Waasle</a></h1>
-				</div>
-			 <!---->
-			 <div class="top-nav">
-				<ul class="memenu skyblue"><li class="active"><a href= "{{ url_for('main.index') }}">Home</a></li>
-					{% if current_user.is_authenticated %}
-					<li class="grid"><a href="{{ url_for('auth.account') }}">Account</a>
-						<div class="mepanel">
-							<div class="row">
-								<div class="col1 me-one">
-                                    <ul>
-                                    <li><a href="{{ url_for('auth.change_password') }}"><h5>Change Password</h5></a></li>
-										<li><a href="{{ url_for('auth.orders') }}"><h5>Orders</h5></a></li>
-										<li><a href="{{ url_for('auth.logout') }}"><h5>Log Out</h5></a></li>
-                                    </ul>
-                                </div>
-
-							</div>
-						</div>
-					</li>
-					{% else %}
-					<li class="grid"><a href="{{ url_for('auth.login') }}">Login</a></li>
-					{% endif %}
-					<li class="grid"><a href="{{ url_for('main.pricing') }}">Pricing</a>
-						<div class="mepanel">
-							<div class="row">
-								<div class="col1 me-one">
-                                    <ul>
-                                    <li><a href="{{ url_for('main.pricing') }}"><h5>Wash & Fold</h5></a></li>
-                                    <li><a href="{{ url_for('main.pricing') }}"><h5>Wash & Iron</h5></a></li>
-                                    <li><a href="{{ url_for('main.pricing') }}"><h5>Dry cleaning</h5></a></li>
-
-                                    </ul>
-                                </div>
-
-							</div>
-						</div>
-					</li>
-					<li class="grid"><a href="{{ url_for('main.faq') }}">FAQ</a></li>
-					<li class="grid"><a href="{{ url_for('main.contact') }}">Contact</a></li>
-				</ul>
-			 </div>
-			 <!---->
-			 <div class="cart box_1">
-				 <a href="{{ url_for('auth.book_now') }}">
-					<div class="total">
-						<div class="Buttons" style="padding: .1em 0;">
-							<h1 class="b1" >
-								<a href="{{ url_for('auth.book_now') }}"><span class="label label-danger" style="font-size: 65%; background-color: #ed645c;">Book Now</span></a>
-							</h1>
-						</div>
-					</div>
+	 <div class="header-bottom" >
+		<div class="logo">
+				<a href="{{ url_for('main.index') }}">
+					<img style="height:70px;width:70px;margin:10px;margin-left:50px;" src="../static/images/Logo.png" alt=""/>
 				</a>
-				 <div class="clearfix"> </div>
-			 </div>
-			 <div class="clearfix"> </div>
+		</div>
 			 <!---->
-			 </div>
-			<div class="clearfix"> </div>
+
+			 <!---->
+
+		<div class="clearfix"> </div>
+			 <!---->
+	 </div>
+
+	<div class="top-nav" style="background-color:#03a9f4; padding-left:50px;">
+		<ul class="memenu skyblue">
+			<li><a href= "{{ url_for('main.index') }}">Home</a></li>
+			{% if current_user.is_authenticated %}
+			<li><a href="{{ url_for('auth.account') }}">Account</a>
+			<li><a href="{{ url_for('auth.change_password') }}"><h5>Change Password</h5></a></li>
+			<li><a href="{{ url_for('auth.orders') }}"><h5>Orders</h5></a></li>
+			<li><a href="{{ url_for('auth.logout') }}"><h5>Log Out</h5></a></li>
+		</ul>
+    </div>
+
+</div>
+
+	{% else %}
+	<li class="grid"><a href="{{ url_for('auth.login') }}">Login</a></li>
+	{% endif %}
+	<li class="grid"><a href="{{ url_for('main.pricing') }}">Pricing</a>
+	<div class="mepanel">
+		<div class="row">
+			<div class="col1 me-one">
+    	        <ul>
+        	        <li><a href="{{ url_for('main.pricing') }}"><h5>Wash & Fold</h5></a></li>
+                    <li><a href="{{ url_for('main.pricing') }}"><h5>Wash & Iron</h5></a></li>
+                    <li><a href="{{ url_for('main.pricing') }}"><h5>Dry cleaning</h5></a></li>
+                </ul>
+            </div>
+		</div>
+	</div>
+	</li>
+	<li class="grid"><a href="{{ url_for('main.faq') }}">FAQ</a></li>
+	<li class="grid"><a href="{{ url_for('main.contact') }}">Contact</a></li>
+	</ul>
+
+	<div class="cart box_1 tran" style="position:absolute; left:80%; top:75px">
+		<a href="{{ url_for('auth.book_now') }}">
+			<div class="total">
+				<div class="Buttons" style="padding: .1em 0;">
+					<h1 class="b1" >
+						<a href="{{ url_for('auth.book_now') }}"><span class="label label-danger" style="font-size: 65%; background-color: #006699;">Book Now</span></a>
+					</h1>
+				</div>
+			</div>
+		</a>
+
+	</div>
+
+	</div>
 </div>
 <!---->
     {% endblock header %}
@@ -133,13 +135,6 @@
 <!---->
 <div class="subscribe">
 	 <div class="container">
-		 <h3>Newsletter</h3>
-		 <form action="{{ url_for('main.subscribe') }}" method='POST' enctype='multipart/form-data'>
-			 {{ form_sub.csrf_token }}
-			 {{ form_sub.email(**{'type': "text", 'class': "text", 'value': "Email", 'onfocus': "this.value = '';", 'onblur': "if (this.value == '') {this.value = 'Email';}"}) }}
-			 {{ form_sub.submit() }}
-		 </form>
-		 <br>
 		 <h3>Download our mobile app</h3>
 		 <form action="{{ url_for('main.mobile_app') }}" method='POST' enctype='multipart/form-data'>
 			 {{ form_mob.csrf_token }}
