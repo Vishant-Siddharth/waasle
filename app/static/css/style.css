@@ -1284,7 +1284,7 @@ font-family: 'Dosis-Medium';
 }
 /*----*/
 .pages {
-	padding: 0em 0px 3em;
+	padding: 0em 0px 0em;
 }
 h3.ghj {
 	color: #000;
@@ -1297,7 +1297,7 @@ h3.ghj {
 
 
 .breadcrumb {
-	margin:3em 0 2em!important;
+	margin:6em 0 2em!important;
 }
 .table {
 	margin-bottom: 0;
