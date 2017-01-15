@@ -15,7 +15,6 @@
     {%block styles %}
 	<link href="{{ url_for('static', filename='css/bootstrap.css') }}" rel="stylesheet" type="text/css" media="all" />
 	<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
-    <link href="{{ url_for('static', filename='css/memenu.css') }}" rel="stylesheet" type="text/css" media="all" />
 	<link href="{{ url_for('static', filename='css/rate.css') }}" rel="stylesheet" type="text/css" media="all" />
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
 	{% endblock styles %}
@@ -46,14 +45,23 @@
   </script>
 
 <div class="header-top">
-	 <div class="header-bottom" >
-		<div class="logo">
-				<a href="{{ url_for('main.index') }}">
-					<img style="height:70px;width:70px;margin:10px;margin-left:50px;" src="../static/images/Logo.png" alt=""/>
-				</a>
-				<h1 id="line_1">Waasle Laundry</h1>
-				<h3 id="line_2">Sign up Today!</h3>
+
+	<!--header-->
+	<div class="row" style="width:100%">
+		<div class="col-md-2 col-sm-2 col-lg-2 col-xs-4">
+			<a href="{{ url_for('main.index') }}">
+				<img style="height:70px; width:70px; margin:10px;margin-left:50px;" src="../static/images/Logo.png" alt=""/>
+			</a>
 		</div>
+		<div class="col-sm-8 col-md-8 col-lg-8 col-xs-5">
+			<h1>Wassle Laundry</h1>
+			<h3>Sign up Today!</h3>
+		</div>
+		<div class="col-sm-2 col-md-2 col-lg-2 col-xs-3">
+			 <img id="line-1" style="height:auto;width:auto;margin-top:10px;" src="../static/images/smphone.png" alt=""/>
+			 <h3 id="line-2" style="display:inline-block;margin-top:20px">1234567891</h3>
+		</div>
+	</div>
 			 <!---->
 
 			 <!---->
@@ -61,45 +69,37 @@
 		<div class="clearfix"> </div>
 			 <!---->
 	 </div>
-
-	<div class="top-nav" style="background-color:#03a9f4; padding-left:50px;">
-		<ul class="memenu skyblue">
-			<li><a href= "{{ url_for('main.index') }}">Home</a></li>
-			{% if current_user.is_authenticated %}
-			<li><a href="{{ url_for('auth.account') }}">Account</a>
-			<li><a href="{{ url_for('auth.change_password') }}"><h5>Change Password</h5></a></li>
-			<li><a href="{{ url_for('auth.orders') }}"><h5>Orders</h5></a></li>
-			<li><a href="{{ url_for('auth.logout') }}"><h5>Log Out</h5></a></li>
-		</ul>
-    </div>
-
-</div>
-
-	{% else %}
-	<li class="grid"><a href="{{ url_for('auth.login') }}">Login</a></li>
-	{% endif %}
-	<li class="grid"><a href="{{ url_for('main.pricing') }}">Pricing</a>
-	</li>
-	<li class="grid"><a href="{{ url_for('main.faq') }}">FAQ</a></li>
-	<li class="grid"><a href="{{ url_for('main.contact') }}">Contact</a></li>
-	</ul>
-
-	<div class="cart box_1 tran" style="position:absolute; left:60%; top:75px">
-		<a href="{{ url_for('auth.book_now') }}">
-			<div class="total">
-				<div class="Buttons" style="padding: .1em 0;">
-					<h1 class="b1" >
-						<a href="{{ url_for('auth.book_now') }}"><span class="label label-danger" style="font-size: 65%; background-color: #006699;">Book Now</span></a>
-					</h1>
-				</div>
+<div class="clearfix"> </div>
+	<style>
+		.headings{color:white; font-size:1.2em; font-weight:bold; border-right:1px solid white;
+		 margin-top:8px; margin-bottom:8px;}
+	</style>
+	<nav class="navbar" style="margin-bottom: 0px; background-color:#03a9f4; color:white;">
+		<div class="container-fluid">
+			<div class="navbar-header">
+				<a class="navbar-brand" href="#"></a>
 			</div>
-		</a>
+			<ul class="nav navbar-nav" style="margin-left:50px;">
+				<li class="active"><a class="headings" href= "{{ url_for('main.index') }}">Home</a></li>
+				{% if current_user.is_authenticated %}
+				<li><a  class="headings" href="{{ url_for('auth.account') }}">Account</a>
+				{% else %}
+				<li><a  class="headings" href="{{ url_for('auth.login') }}">Login</a></li>
+				{% endif %}
+				<li><a  class="headings" href="{{ url_for('main.pricing') }}">Pricing</a></li>
+				<li><a  class="headings" href="{{ url_for('main.faq') }}">FAQ</a></li>
+				<li><a  class="headings" href="{{ url_for('main.contact') }}">Contact</a></li>
+			</ul>
+			<ul class="nav navbar-nav navbar-right">
+				<li>
+					<a href="{{ url_for('auth.book_now') }}">
+						<button class="btn btn-primary">Book Now</button>
+					</a>
+				</li>
+			</ul>
+		</div>
+	</nav>
 
-	</div>
-
-	</div>
-</div>
-<!---->
     {% endblock header %}
 	{% for message in get_flashed_messages() %}
 	<div class="alerts" style="height: 60px; padding: .1em 0;">
