@@ -17,7 +17,6 @@
 	<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
     <link href="{{ url_for('static', filename='css/memenu.css') }}" rel="stylesheet" type="text/css" media="all" />
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
-	<link rel="stylesheet" type="text/css" href="https://fonts.googleapis.com/css?family=Tangerine">
 	{% endblock styles %}
 
     {% block scripts %}
@@ -51,6 +50,8 @@
 				<a href="{{ url_for('main.index') }}">
 					<img style="height:70px;width:70px;margin:10px;margin-left:50px;" src="../static/images/Logo.png" alt=""/>
 				</a>
+				<h1 id="line_1">Waasle Laundry</h1>
+				<h3 id="line_2">Sign up Today!</h3>
 		</div>
 			 <!---->
 
@@ -93,7 +94,7 @@
 	<li class="grid"><a href="{{ url_for('main.contact') }}">Contact</a></li>
 	</ul>
 
-	<div class="cart box_1 tran" style="position:absolute; left:80%; top:75px">
+	<div class="cart box_1 tran" style="position:absolute; left:60%; top:75px">
 		<a href="{{ url_for('auth.book_now') }}">
 			<div class="total">
 				<div class="Buttons" style="padding: .1em 0;">

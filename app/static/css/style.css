@@ -56,6 +56,16 @@ h1.b1,h2.b2,h3.b3 {
 .logo img{
 	width:100%;
 }
+
+#line_1{
+float:right;
+margin-left:-40px;
+}
+#line_2{
+float:right;
+margin-top:50px;
+}
+
 .login a{
 	font-size:13px;
 	font-weight:500;
