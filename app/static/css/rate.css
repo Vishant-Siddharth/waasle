@@ -44,7 +44,7 @@ th {
 }
 .boldcol {vertical-align:middle!important; font-size:21px; font-weight:bold;
 border-left:1px solid #ddd; border-right:1px solid #ddd; text-align:center;}
-h1.rate, .tbauto h1 {font-size:20px; margin-bottom:14px; margin-top:0;}
+h1.rate, .tbauto h1 {font-size:20px; margin-bottom:14px; margin-top:0;text-align:center;}
 .tbcontainer {width:960px; margin:auto;}
 .tbauto {float:left; width:450px; margin: 0 14px;}
 .clearfix:after {clear:both; display:block; content:"";}
