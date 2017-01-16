@@ -92,7 +92,10 @@ def login():
             else:
                 for i, v in form_register.errors.items():
                     flash(v[0])
-        return render_template('auth/login.html', form_reg=form_register, form_log=form_login)
+        elif request.args.get('next'):
+            tmp = request.args.get('next')
+            return render_template('auth/login.html', form_reg=form_register, form_log=form_login, next=tmp)
+        return render_template('auth/login.html', form_reg=form_register, form_log=form_login, next=None)
     else:
         return redirect(url_for('auth.account'))
 
