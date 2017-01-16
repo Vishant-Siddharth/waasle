@@ -49,7 +49,7 @@ def login():
                 user = User.query.filter_by(email=form_login.email.data).first()
                 if user is not None and user.verify_password(form_login.password.data):
                     login_user(user, form_login.remember_me.data)
-                    return redirect(request.args.get('next') or url_for('main.index'))
+                    return redirect(request.args.get('next') or url_for('auth.account'))
                 else:
                     flash('Invalid email or password')
             else:
