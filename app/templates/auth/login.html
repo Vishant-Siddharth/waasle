@@ -109,14 +109,18 @@ Waasle Laundry| Account
 			 <h2>existing user</h2>
 			 <div class="registration_form">
 			 <!-- Form -->
-				<form action="{{url_for('auth.login', type='login')}}" method='POST' enctype='multipart/form-data'>
+				 {% if next == '/auth/book-now' %}
+				 <form action="{{url_for('auth.login', type='login', next='/auth/book-now')}}" method='POST' enctype='multipart/form-data'>
+				 {% else %}
+				 <form action="{{url_for('auth.login', type='login')}}" method='POST' enctype='multipart/form-data'>
+					 {% endif %}
 					{{ form_log.csrf_token }}
 					<div>
 						<span>{{ form_log.email(**{	'placeholder': "Email Address", 'tabindex':"10"}) }}</span>
 					</div>
 					<div>
 						<span>{{ form_log.password(**{	'placeholder': "Password", 'tabindex':"11"}) }}</span>
-					</div>						
+					</div>
 					<div>
 						<span>{{ form_log.remember_me(**{'tabindex': "12"}) }}</span>
 						<span>{{ form_log.remember_me.label() }}</span>
