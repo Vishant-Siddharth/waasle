@@ -16,7 +16,7 @@ Waasle | Contact Us
 	  <div class="container">
 		 <ol class="breadcrumb">
 		  <li><a href="{{ url_for('main.index') }}">Home</a></li>
-		  <li class="active">Contact</li>
+		  <li class="active">Account</li>
 		 </ol>
 			<!--start account-->
             <div class="rsidebar span_1_of_left">
@@ -37,7 +37,7 @@ Waasle | Contact Us
 					      </div>
 						  <div class="tab3">
 							 <ul class="place">
-								 <li class="sort"><a href="{{ url_for('main.pricing') }}">Place Order</a></li>
+								 <li class="sort"><a href="{{ url_for('auth.book_now') }}">Place Order</a></li>
 									<div class="clearfix"> </div>
 							  </ul>
 					      </div>
@@ -50,6 +50,11 @@ Waasle | Contact Us
                      </div>
                  </section>
             </div>
-      </div>
+		  <div class="col-md-9 product-model-sec">
+			  <div style="margin-top: 90px; margin-left: 200px;">
+				  Hello! {{user_name}}
+			  </div>
+		  </div>
+	  </div>
 </div>
 {% endblock %}

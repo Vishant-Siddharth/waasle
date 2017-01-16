@@ -100,12 +100,12 @@ def login():
 @auth.route('/account')
 @login_required
 def account():
-    return render_template('auth/account.html')
+    return render_template('auth/account.html', user_name=current_user.name)
 
 
 @auth.route('/book-now', methods=['GET', 'POST'])
-# @login_required
-# @only_confirmed
+@login_required
+@only_confirmed
 def book_now():
     return render_template('auth/book_now.html')
 
