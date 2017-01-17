@@ -109,8 +109,8 @@ Waasle Laundry| Account
 			 <h2>existing user</h2>
 			 <div class="registration_form">
 			 <!-- Form -->
-				 {% if next == '/auth/book-now' %}
-				 <form action="{{url_for('auth.login', type='login', next='/auth/book-now')}}" method='POST' enctype='multipart/form-data'>
+				 {% if next %}
+				 <form action="{{ url_for('auth.login', type='login', next='%s'% next)}}" method='POST' enctype='multipart/form-data'>
 				 {% else %}
 				 <form action="{{url_for('auth.login', type='login')}}" method='POST' enctype='multipart/form-data'>
 					 {% endif %}
