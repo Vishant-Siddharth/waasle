@@ -122,7 +122,18 @@ def book_now():
                 order.user_id = current_user.id
                 db.session.add(order)
                 db.session.commit()
-                flash("Your order has been placed. You'll get a confirmation call.")
+                if request.args.get('choice') == 'new':
+                    user = User.query.filter_by(id=current_user.id).first()
+                    user.mob = request.args.get('number')
+                    user.address_1 = request.args.get('address_1')
+                    user.address_2 = request.args.get('address_2')
+                    user.city = request.args.get('city')
+                    user.pincode = request.args.get('pincode')
+                    db.session.add(user)
+                    db.session.commit()
+                send_email(current_user.email, 'Scheduled Pickup',
+                           'auth/email/pickup', user=current_user, order=order)
+                flash("Your order has been placed")
                 return redirect(url_for('auth.orders'))
             except:
                 db.session.rollback()

@@ -53,22 +53,22 @@
         <form action="{{ url_for('auth.book_now')}}" method='GET' enctype='multipart/form-data'>
   			{{ form_book.csrf_token }}
 			<div>
-				<span>{{ form_book.number(**{'placeholder': "Mobile Number", 'tabindex':"3"}) }}</span>
-			</div>
-			<div>
 				<span>{{ form_book.choice(**{'tabindex':"15"}) }}</span>
 			</div>
 			<div>
-				<span>{{ form_book.address_1(**{'placeholder': "Address Line 1", 'tabindex':"6"}) }}</span>
+				<span>{{ form_book.number(**{'value': current_user.mob, 'tabindex':"3"}) }}</span>
 			</div>
 			<div>
-				<span>{{ form_book.address_2(**{'placeholder': "Address Line 2", 'tabindex':"7"}) }}</span>
+				<span>{{ form_book.address_1(**{'value': current_user.address_1, 'tabindex':"6"}) }}</span>
 			</div>
 			<div>
-				<span>{{ form_book.city(**{'placeholder': "City", 'tabindex':"8"}) }}</span>
+				<span>{{ form_book.address_2(**{'value': current_user.address_2, 'tabindex':"7"}) }}</span>
 			</div>
 			<div>
-				<span>{{ form_book.pincode(**{'placeholder': "Pincode", 'tabindex':"8"}) }}</span>
+				<span>{{ form_book.city(**{'value': current_user.city, 'tabindex':"8"}) }}</span>
+			</div>
+			<div>
+				<span>{{ form_book.pincode(**{'value': current_user.pincode, 'tabindex':"8"}) }}</span>
 			</div>
 			<div>
 				<span>{{ form_book.date(**{	'placeholder': "Date", 'tabindex':"10", 'type': 'date'}) }}</span>
