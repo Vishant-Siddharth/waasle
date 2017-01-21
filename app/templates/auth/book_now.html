@@ -49,8 +49,35 @@
 
 
     <div class="col-md-9 product-model-sec">
-        This is it.
-
+		<div class="registration_form">
+        <form action="{{ url_for('auth.book_now')}}" method='GET' enctype='multipart/form-data'>
+  			{{ form_book.csrf_token }}
+			<div>
+				<span>{{ form_book.number(**{'placeholder': "Mobile Number", 'tabindex':"3"}) }}</span>
+			</div>
+			<div>
+				<span>{{ form_book.choice(**{'tabindex':"15"}) }}</span>
+			</div>
+			<div>
+				<span>{{ form_book.address_1(**{'placeholder': "Address Line 1", 'tabindex':"6"}) }}</span>
+			</div>
+			<div>
+				<span>{{ form_book.address_2(**{'placeholder': "Address Line 2", 'tabindex':"7"}) }}</span>
+			</div>
+			<div>
+				<span>{{ form_book.city(**{'placeholder': "City", 'tabindex':"8"}) }}</span>
+			</div>
+			<div>
+				<span>{{ form_book.pincode(**{'placeholder': "Pincode", 'tabindex':"8"}) }}</span>
+			</div>
+			<div>
+				<span>{{ form_book.date(**{	'placeholder': "Date", 'tabindex':"10", 'type': 'date'}) }}</span>
+			</div>
+			<div>
+				<span>{{ form_book.submit() }}</span>
+			</div>
+		</form>
+	</div>
     </div>
 
     </div>

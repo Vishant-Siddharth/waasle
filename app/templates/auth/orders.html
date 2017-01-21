@@ -56,7 +56,10 @@ Waasle Laundry| Change Password
             <p>You didn't book any laundry from us yet. Please give us a chance to make you happy.</p>
         {% else %}
             {% for order in current_user.orders.all() %}
-                <p>{{ order.timestamp}} id = {{ order.id }}</p>
+                <p>
+					{{ order.timestamp}} <br/> id = {{ order.id }}
+					user_id = {{ order.user_id }}
+				</p>
             {% endfor %}
         {% endif %}
 
