@@ -1,0 +1,15 @@
+Dear {{ user.name }},
+
+We have recieved your demand for laundry.
+
+Our pickup team will contact you for further instructions with timing.
+
+Your scheduled date is {{ order.pick_up }}.
+
+We will try our best to make you happy with our world class service.
+
+Sincerely,
+
+The Waasle Laundry Team
+
+Note: replies to this email address are not monitored.

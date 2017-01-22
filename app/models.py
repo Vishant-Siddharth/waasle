@@ -114,8 +114,8 @@ class Order(db.Model):
     user_id = db.Column(db.Integer, db.ForeignKey('users.id'), nullable=False)
     timestamp = db.Column(db.DateTime(), default=datetime.now)
     products = db.relationship('Product', secondary=relationship_table, backref='orders')
-    ratings = db.Column(db.Integer)
-    complete = db.Column(db.Boolean, default=False)
+    pick_up = db.Column(db.Date(), nullable=False)
+    status = db.Column(db.String(20))
 
 
 class Product(db.Model):

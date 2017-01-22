@@ -2,12 +2,13 @@ from flask import render_template, redirect, request, url_for, flash, g
 from flask_login import login_user, logout_user, login_required, current_user
 from . import auth
 from .. import db
-from ..models import User, Mobile, Subscription
+from ..models import User, Mobile, Subscription, Order
 from ..emails import send_email
 from ..decorators import only_confirmed
 from .forms import LoginForm, RegistrationForm, ChangePasswordForm,\
-    PasswordResetRequestForm, PasswordResetForm, SubscriptionForm
+    PasswordResetRequestForm, PasswordResetForm, SubscriptionForm, BookNowForm
 from ..main.forms import MobileForm
+import datetime
 
 '''
 @auth.before_app_request        # this is run every time a request is made to the auth app
@@ -110,7 +111,37 @@ def account():
 @login_required
 @only_confirmed
 def book_now():
-    return render_template('auth/book_now.html')
+    form_book = BookNowForm()
+    date = request.args.get('date', default=None)
+    if (request.args.get('submit', None) == 'Book Now') and date != '':
+        tmp = datetime.datetime.strptime(date, '%Y-%m-%d').date()
+        if tmp >= datetime.date.today():
+            order = Order()
+            try:
+                order.pick_up = tmp
+                order.user_id = current_user.id
+                order.status = 'Processing'
+                db.session.add(order)
+                db.session.commit()
+                if request.args.get('choice') == 'new':
+                    user = User.query.filter_by(id=current_user.id).first()
+                    user.mob = request.args.get('number')
+                    user.address_1 = request.args.get('address_1')
+                    user.address_2 = request.args.get('address_2')
+                    user.city = request.args.get('city')
+                    user.pincode = request.args.get('pincode')
+                    db.session.add(user)
+                    db.session.commit()
+                send_email(current_user.email, 'Scheduled Pickup',
+                           'auth/email/pickup', user=current_user, order=order)
+                flash("Your order has been placed")
+                return redirect(url_for('auth.orders'))
+            except:
+                db.session.rollback()
+                flash('Something Went Wrong. Please try again')
+        else:
+            flash('Wrong choice. Please try again.')
+    return render_template('auth/book_now.html', form_book=form_book)
 
 
 @auth.route('/orders')

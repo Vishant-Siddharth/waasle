@@ -75,17 +75,12 @@ def vision():
 
 @main.route('/blog', methods=['GET', 'POST'])
 def blog():
-    return render_template('blog.html')
+    return redirect(url_for('main.index'))
 
 
 @main.route('/why-us', methods=['GET', 'POST'])
 def why_us():
     return render_template('why-us.html')
-
-
-@main.route('/typo')
-def typo():
-    return render_template('typo.html')
 
 
 @main.route('/terms-&-conditions')
@@ -166,6 +161,6 @@ def unsubscribe():
         return redirect(url_for('main.index'))
 
 
-@main.route('/single')
+#@main.route('/single')
 def base():
     return render_template('single.html')
