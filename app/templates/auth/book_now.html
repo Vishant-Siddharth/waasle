@@ -7,15 +7,23 @@
 
 {% block content %}
 <script>
-	function choice(){
-		if (document.getElementById("choice").value == "same")
-        	document.getElementById("mob").value = "aadfasdf";
- 			document.getElementById("add1").value = "adf";
-    		}
- 		if (document.getElementById("choice").value == "new") {
-   			document.getElementById("pincode").readonly = true;
-    		}
-}
+	function myFunction(typ){
+	if (typ === "choice-0"){
+		document.getElementById("mob").readOnly= true;
+		document.getElementById("pincode").readOnly = true;
+		document.getElementById("add1").readOnly = true;
+		document.getElementById("add2").readOnly = true;
+		document.getElementById("city").readOnly = true;
+		}
+	else if (typ === "choice-1"){
+		document.getElementById("mob").readOnly= false;
+		document.getElementById("pincode").readOnly = false;
+		document.getElementById("add1").readOnly = false;
+		document.getElementById("add2").readOnly = false;
+		document.getElementById("city").readOnly = false;
+		}
+	}
+
 </script>
 
 
@@ -65,11 +73,15 @@
         <form action="{{ url_for('auth.book_now')}}" method='GET' enctype='multipart/form-data'>
   			{{ form_book.csrf_token }}
 			<div>
-				<span>{{ form_book.choice(onclick= "choice()", tabindex = "15", id= "choice") }}</span>
+				<p>
+				{% for subfield in form_book.choice %}
+        			{{ subfield(onclick="myFunction('%s')" %subfield.id) }}
+        			{{ subfield.label }}
+	    		{% endfor %}
+    			</p>
 			</div>
-			document.getElement
 			<div>
-				<span>{{ form_book.number(**{'id': 'mob','value': current_user.mob, 'tabindex':"3"}) }}</span>
+				<span>{{ form_book.number(**{'id': 'mob','value': current_user.mob, 'tabindex':"3", 'readonly': 'readonly'}) }}</span>
 			</div>
 			<div>
 				<span>{{ form_book.address_1(**{'id': 'add1','value': current_user.address_1, 'tabindex':"6", 'readonly': 'readonly'}) }}</span>
