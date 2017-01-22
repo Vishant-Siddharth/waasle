@@ -55,12 +55,34 @@ Waasle Laundry| Change Password
         {% if len(current_user.orders.all()) == 0 %}
             <p>You didn't book any laundry from us yet. Please give us a chance to make you happy.</p>
         {% else %}
+        <div>
+			<table  id="example"  class="display">
+            <thead>
+            <th>Ticket ID</th>
+              <th>Date Created</th>
+               <th>Scheduled Date</th>
+              <th>Status</th>
+                </thead>
+            <tbody>
+
+
+            </tbody>
+            <tfoot >
             {% for order in current_user.orders.all() %}
-                <p>
-					{{ order.timestamp}} <br/> id = {{ order.id }}
-					user_id = {{ order.user_id }}
-				</p>
+              <tr>
+                  <th><input type="text"  name="amount"   value="{{ order.id }}"  class="search_init" /></th>
+                  <th><input type="text"  name="status"   value="{{ order.timestamp }}"  class="search_init" /></th>
+                  <th><input type="text"  name="amount"   value="{{ order.pick_up }}"  class="search_init" /></th>
+                  <th><input type="text"  name="status"   value="{{ order.status }}"  class="search_init" /></th>
+              </tr>
             {% endfor %}
+
+            </tfoot>
+          </table>
+		</div>
+        <br/><br/>
+		<p>
+
         {% endif %}
 
 

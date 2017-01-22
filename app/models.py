@@ -115,7 +115,7 @@ class Order(db.Model):
     timestamp = db.Column(db.DateTime(), default=datetime.now)
     products = db.relationship('Product', secondary=relationship_table, backref='orders')
     pick_up = db.Column(db.Date(), nullable=False)
-    complete = db.Column(db.Boolean, default=False)
+    status = db.Column(db.String(20))
 
 
 class Product(db.Model):

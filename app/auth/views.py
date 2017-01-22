@@ -120,6 +120,7 @@ def book_now():
             try:
                 order.pick_up = tmp
                 order.user_id = current_user.id
+                order.status = 'Processing'
                 db.session.add(order)
                 db.session.commit()
                 if request.args.get('choice') == 'new':

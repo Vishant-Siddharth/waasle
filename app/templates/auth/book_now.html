@@ -4,7 +4,19 @@
 {{ super() }}
 {% endblock %}
 
+
 {% block content %}
+<script>
+	function choice(){
+		if (document.getElementById("choice").value == "same")
+        	document.getElementById("mob").value = "aadfasdf";
+ 			document.getElementById("add1").value = "adf";
+    		}
+ 		if (document.getElementById("choice").value == "new") {
+   			document.getElementById("pincode").readonly = true;
+    		}
+}
+</script>
 
 
 <div class="product-model">
@@ -53,22 +65,23 @@
         <form action="{{ url_for('auth.book_now')}}" method='GET' enctype='multipart/form-data'>
   			{{ form_book.csrf_token }}
 			<div>
-				<span>{{ form_book.choice(**{'tabindex':"15"}) }}</span>
+				<span>{{ form_book.choice(onclick= "choice()", tabindex = "15", id= "choice") }}</span>
+			</div>
+			document.getElement
+			<div>
+				<span>{{ form_book.number(**{'id': 'mob','value': current_user.mob, 'tabindex':"3"}) }}</span>
 			</div>
 			<div>
-				<span>{{ form_book.number(**{'value': current_user.mob, 'tabindex':"3"}) }}</span>
+				<span>{{ form_book.address_1(**{'id': 'add1','value': current_user.address_1, 'tabindex':"6", 'readonly': 'readonly'}) }}</span>
 			</div>
 			<div>
-				<span>{{ form_book.address_1(**{'value': current_user.address_1, 'tabindex':"6"}) }}</span>
+				<span>{{ form_book.address_2(**{'id': 'add2','value': current_user.address_2, 'tabindex':"7", 'readonly': 'readonly'}) }}</span>
 			</div>
 			<div>
-				<span>{{ form_book.address_2(**{'value': current_user.address_2, 'tabindex':"7"}) }}</span>
+				<span>{{ form_book.city(**{'id': 'city', 'value': current_user.city, 'tabindex':"8", 'readonly': 'readonly'}) }}</span>
 			</div>
 			<div>
-				<span>{{ form_book.city(**{'value': current_user.city, 'tabindex':"8"}) }}</span>
-			</div>
-			<div>
-				<span>{{ form_book.pincode(**{'value': current_user.pincode, 'tabindex':"8"}) }}</span>
+				<span>{{ form_book.pincode(**{'id': 'pincode', 'value': current_user.pincode, 'tabindex':"8", 'readonly': 'readonly'}) }}</span>
 			</div>
 			<div>
 				<span>{{ form_book.date(**{	'placeholder': "Date", 'tabindex':"10", 'type': 'date'}) }}</span>

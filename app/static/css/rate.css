@@ -70,3 +70,13 @@ h1.rate, .tbauto h1 {font-size:20px; margin-bottom:14px; margin-top:0;text-align
 	vertical-align:middle;
 	padding:10px 10px;
 }
+table.display thead th {
+    padding: 7px 9px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 15px;
+    background-color: #54C5D0;
+    color: #fff;
+    border-right: 1px solid rgba(0,0,0,0.1);
+    text-align: left;
+}
