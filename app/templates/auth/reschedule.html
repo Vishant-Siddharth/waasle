@@ -11,6 +11,24 @@ Waasle Laundry| Change Password
 
 {% block content %}
 
+<script>
+	function myFunction(typ){
+	if (typ === "choice-0"){
+		document.getElementById("mob").readOnly= true;
+		document.getElementById("pincode").readOnly = true;
+		document.getElementById("add1").readOnly = true;
+		document.getElementById("add2").readOnly = true;
+		document.getElementById("city").readOnly = true;
+		}
+	else if (typ === "choice-1"){
+		document.getElementById("mob").readOnly= false;
+		document.getElementById("pincode").readOnly = false;
+		document.getElementById("add1").readOnly = false;
+		document.getElementById("add2").readOnly = false;
+		document.getElementById("city").readOnly = false;
+		}
+	}
+</script>
 
 <div class="product-model">
 <div class="container">
@@ -69,22 +87,22 @@ Waasle Laundry| Change Password
 				<span>{{ form_re.order(**{'id': 'ord','value': order}) }}</span>
 			</div>
 			<div>
-				<span>{{ form_re.number(**{'id': 'mob','value': current_user.mob, 'tabindex':"3", 'readonly': 'readonly'}) }}</span>
+				<span>{{ form_re.number(**{'placeholder': "Number", 'id': 'mob','value': current_user.mob, 'tabindex':"3", 'readonly': 'readonly'}) }}</span>
 			</div>
 			<div>
-				<span>{{ form_re.address_1(**{'id': 'add1','value': current_user.address_1, 'tabindex':"6", 'readonly': 'readonly'}) }}</span>
+				<span>{{ form_re.address_1(**{'placeholder': "Address Line 1", 'id': 'add1','value': current_user.address_1, 'tabindex':"6", 'readonly': 'readonly'}) }}</span>
 			</div>
 			<div>
-				<span>{{ form_re.address_2(**{'id': 'add2','value': current_user.address_2, 'tabindex':"7", 'readonly': 'readonly'}) }}</span>
+				<span>{{ form_re.address_2(**{'placeholder': "Address Line 2", 'id': 'add2','value': current_user.address_2, 'tabindex':"7", 'readonly': 'readonly'}) }}</span>
 			</div>
 			<div>
-				<span>{{ form_re.city(**{'id': 'city', 'value': current_user.city, 'tabindex':"8", 'readonly': 'readonly'}) }}</span>
+				<span>{{ form_re.city(**{'placeholder': "City", 'id': 'city', 'value': current_user.city, 'tabindex':"8", 'readonly': 'readonly'}) }}</span>
 			</div>
 			<div>
-				<span>{{ form_re.pincode(**{'id': 'pincode', 'value': current_user.pincode, 'tabindex':"8", 'readonly': 'readonly'}) }}</span>
+				<span>{{ form_re.pincode(**{'placeholder': "Pincode", 'id': 'pincode', 'value': current_user.pincode, 'tabindex':"8", 'readonly': 'readonly'}) }}</span>
 			</div>
 			<div>
-				<span>{{ form_re.date(**{	'placeholder': "Date", 'tabindex':"10", 'type': 'date', }) }}</span>
+				<span>{{ form_re.date(**{'placeholder': "Date", 'tabindex':"10", 'type': 'date', }) }}</span>
 			</div>
 			<div>
 				<span>{{ form_re.submit() }}</span>

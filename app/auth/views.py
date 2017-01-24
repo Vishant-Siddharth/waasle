@@ -126,11 +126,11 @@ def book_now():
                 db.session.commit()
                 if request.args.get('choice') == 'new':
                     user = User.query.filter_by(id=current_user.id).first()
-                    user.mob = request.args.get('number')
-                    user.address_1 = request.args.get('address_1')
-                    user.address_2 = request.args.get('address_2')
-                    user.city = request.args.get('city')
-                    user.pincode = request.args.get('pincode')
+                    user.mob = request.args.get('number') if request.args.get('number') != '' else user.mob
+                    user.address_1 = request.args.get('address_1') if request.args.get('address_1') else user.address_1
+                    user.address_2 = request.args.get('address_2') if request.args.get('address_2') else user.address_2
+                    user.city = request.args.get('city') if request.args.get('city') else user.city
+                    user.pincode = request.args.get('pincode') if request.args.get('pincode') else user.pincode
                     db.session.add(user)
                     db.session.commit()
                 send_email(current_user.email, 'Scheduled Pickup',
@@ -172,11 +172,11 @@ def reschedule():
                     db.session.commit()
                     if request.args.get('choice') == 'new':
                         user = User.query.filter_by(id=current_user.id).first()
-                        user.mob = request.args.get('number')
-                        user.address_1 = request.args.get('address_1')
-                        user.address_2 = request.args.get('address_2')
-                        user.city = request.args.get('city')
-                        user.pincode = request.args.get('pincode')
+                        user.mob = request.args.get('number') if request.args.get('number') != '' else user.mob
+                        user.address_1 = request.args.get('address_1') if request.args.get('address_1') else user.address_1
+                        user.address_2 = request.args.get('address_2') if request.args.get('address_2') else user.address_2
+                        user.city = request.args.get('city') if request.args.get('city') else user.city
+                        user.pincode = request.args.get('pincode') if request.args.get('pincode') else user.pincode
                         db.session.add(user)
                         db.session.commit()
                     flash("Your order has been rescheduled")
