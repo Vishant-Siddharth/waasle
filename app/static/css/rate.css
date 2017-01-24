@@ -78,5 +78,16 @@ table.display thead th {
     background-color: #54C5D0;
     color: #fff;
     border-right: 1px solid rgba(0,0,0,0.1);
-    text-align: left;
+    text-align: center;
+}
+table.display tfooter th input   {
+    padding: 7px 9px;
+    font-weight: bold;
+    cursor: pointer;
+    font-size: 15px;
+    border-right: 1px solid rgba(0,0,0,0.1);
+    text-align: center;
+}
+.mytext {
+    width: 180px;
 }

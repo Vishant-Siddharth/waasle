@@ -87,3 +87,17 @@ class BookNowForm(FlaskForm):
     city = StringField('City', validators=[DataRequired(), Length(4, 25), ])
     pincode = IntegerField('Pin Code', validators=[DataRequired()])
     submit = SubmitField('Book Now')
+
+
+class RescheduleForm(FlaskForm):
+    date = DateField('Date and Time', format='%d/%m/%Y')
+    order = IntegerField('order')
+    number = StringField('Phone number', validators=[DataRequired(), Length(8, 15,
+                                                                            message='length 8-15')])
+    choice = RadioField(validators=[DataRequired()],
+                        choices=[('same', 'Same'), ('new', 'New')], default='same')
+    address_1 = StringField('Address Line 1', validators=[DataRequired(), Length(4, 256), ])
+    address_2 = StringField('Address Line 2', validators=[DataRequired(), Length(4, 256), ])
+    city = StringField('City', validators=[DataRequired(), Length(4, 25), ])
+    pincode = IntegerField('Pin Code', validators=[DataRequired()])
+    submit = SubmitField('Confirm')

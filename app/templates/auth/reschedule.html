@@ -1,0 +1,101 @@
+{% extends "base.html" %}
+
+{% block title %}
+Waasle Laundry| Change Password
+{% endblock %}
+
+{%block styles %}
+{{super()}}
+	<link href="{{ url_for('static', filename='css/form.css') }}" rel="stylesheet" type="text/css" media="all" />
+{% endblock styles %}
+
+{% block content %}
+
+
+<div class="product-model">
+<div class="container">
+		 <ol class="breadcrumb">
+		<li><a href="{{ url_for('main.index') }}">Home</a></li>
+            <li><a href="{{ url_for('auth.account') }}">Account</a></li>
+            <li class="active">Reschedule</li>
+        </ol>
+    <h2>Reschedule</h2>
+    <div class="rsidebar span_1_of_left">
+				 <section  class="sky-form">
+					 <div class="product_right">
+						 <h4 class="m_2"><span class="glyphicon glyphicon-minus" aria-hidden="true"></span>Account</h4>
+						 <div class="tab1">
+							 <ul class="place">
+								 <li class="sort"><a href="{{ url_for('auth.change_password') }}">Change Password</a></li>
+									<div class="clearfix"> </div>
+							  </ul>
+					      </div>
+						  <div class="tab2">
+							 <ul class="place">
+								 <li class="sort"><a href="{{ url_for('auth.orders') }}">Your Orders</a></li>
+									<div class="clearfix"> </div>
+							  </ul>
+					      </div>
+						  <div class="tab3">
+							 <ul class="place">
+								 <li class="sort"><a href="{{ url_for('auth.book_now') }}">Place Order</a></li>
+									<div class="clearfix"> </div>
+							  </ul>
+					      </div>
+                         <div class="tab4">
+							 <ul class="place">
+								 <li class="sort"><a href="{{ url_for('auth.logout') }}">Logout</a></li>
+									<div class="clearfix"> </div>
+							  </ul>
+					      </div>
+                     </div>
+                 </section>
+            </div>
+
+
+    <div class="col-md-9 product-model-sec">
+		<div class="registration_form">
+        <form action="{{ url_for('auth.reschedule')}}" method='GET' enctype='multipart/form-data'>
+  			{{ form_re.csrf_token }}
+			<div>
+				<p>
+				{% for subfield in form_re.choice %}
+        			{{ subfield(onclick="myFunction('%s')" %subfield.id) }}
+        			{{ subfield.label }}
+	    		{% endfor %}
+    			</p>
+			</div>
+			<div style="display:none;">
+				<span>{{ form_re.order(**{'id': 'ord','value': order}) }}</span>
+			</div>
+			<div>
+				<span>{{ form_re.number(**{'id': 'mob','value': current_user.mob, 'tabindex':"3", 'readonly': 'readonly'}) }}</span>
+			</div>
+			<div>
+				<span>{{ form_re.address_1(**{'id': 'add1','value': current_user.address_1, 'tabindex':"6", 'readonly': 'readonly'}) }}</span>
+			</div>
+			<div>
+				<span>{{ form_re.address_2(**{'id': 'add2','value': current_user.address_2, 'tabindex':"7", 'readonly': 'readonly'}) }}</span>
+			</div>
+			<div>
+				<span>{{ form_re.city(**{'id': 'city', 'value': current_user.city, 'tabindex':"8", 'readonly': 'readonly'}) }}</span>
+			</div>
+			<div>
+				<span>{{ form_re.pincode(**{'id': 'pincode', 'value': current_user.pincode, 'tabindex':"8", 'readonly': 'readonly'}) }}</span>
+			</div>
+			<div>
+				<span>{{ form_re.date(**{	'placeholder': "Date", 'tabindex':"10", 'type': 'date', }) }}</span>
+			</div>
+			<div>
+				<span>{{ form_re.submit() }}</span>
+			</div>
+			<div>
+				<span><input id="del" name="submit" type="submit" value="Delete"></span>
+			</div>
+
+		</form>
+	</div>
+    </div>
+</div>
+</div>
+{% endblock %}

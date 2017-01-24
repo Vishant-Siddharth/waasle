@@ -6,7 +6,8 @@ from ..models import User, Mobile, Subscription, Order
 from ..emails import send_email
 from ..decorators import only_confirmed
 from .forms import LoginForm, RegistrationForm, ChangePasswordForm,\
-    PasswordResetRequestForm, PasswordResetForm, SubscriptionForm, BookNowForm
+    PasswordResetRequestForm, PasswordResetForm, SubscriptionForm, \
+    BookNowForm, RescheduleForm
 from ..main.forms import MobileForm
 import datetime
 
@@ -149,6 +150,56 @@ def book_now():
 @only_confirmed
 def orders():
     return render_template('auth/orders.html')
+
+
+@auth.route('/reschedule')
+@login_required
+@only_confirmed
+def reschedule():
+    form_re = RescheduleForm()
+    order = Order()
+    if request.args.get('submit', None) == 'Confirm':
+        date = request.args.get('date', default=None)
+        if date != '':
+            tmp = datetime.datetime.strptime(date, '%Y-%m-%d').date()
+            if (tmp >= datetime.date.today()) and request.args.get('order', None):
+                order = Order.query.filter_by(id=request.args.get('order', None)).first()
+                try:
+                    order.pick_up = tmp
+                    order.status = 'Rescheduled'
+                    db.session.add(order)
+                    db.session.commit()
+                    if request.args.get('choice') == 'new':
+                        user = User.query.filter_by(id=current_user.id).first()
+                        user.mob = request.args.get('number')
+                        user.address_1 = request.args.get('address_1')
+                        user.address_2 = request.args.get('address_2')
+                        user.city = request.args.get('city')
+                        user.pincode = request.args.get('pincode')
+                        db.session.add(user)
+                        db.session.commit()
+                    flash("Your order has been rescheduled")
+                    return redirect(url_for('auth.orders'))
+                except:
+                    db.session.rollback()
+                    flash('Something Went Wrong. Please try again')
+        else:
+            flash('Wrong choice. Please try again.')
+    elif request.args.get('submit', None) == 'Reschedule':
+        id = request.args.get('order', None)
+        return render_template('auth/reschedule.html', form_re=form_re, order=id)
+    elif request.args.get('submit', None) == 'Delete':
+        order = Order.query.filter_by(id=request.args.get('order', None)).first()
+        if order:
+            try:
+                order.status = 'Cancelled'
+                db.session.add(order)
+                db.session.commit()
+                flash('Your order has been cancelled')
+            except:
+                db.session.rollback()
+                flash('Something Went Wrong. Please try again')
+        return redirect(url_for('auth.orders'))
 
 
 @auth.route('/logout')
