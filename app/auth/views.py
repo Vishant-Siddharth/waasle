@@ -158,11 +158,12 @@ def orders():
 def reschedule():
     form_re = RescheduleForm()
     order = Order()
+    id = request.args.get('order', None)
     if request.args.get('submit', None) == 'Confirm':
         date = request.args.get('date', default=None)
         if date != '':
             tmp = datetime.datetime.strptime(date, '%Y-%m-%d').date()
-            if (tmp >= datetime.date.today()) and request.args.get('order', None):
+            if tmp >= datetime.date.today():
                 order = Order.query.filter_by(id=request.args.get('order', None)).first()
                 try:
                     order.pick_up = tmp
@@ -185,11 +186,11 @@ def reschedule():
                     flash('Something Went Wrong. Please try again')
         else:
             flash('Wrong choice. Please try again.')
+        return render_template('auth/reschedule.html', form_re=form_re, order=id)
     elif request.args.get('submit', None) == 'Reschedule':
-        id = request.args.get('order', None)
         return render_template('auth/reschedule.html', form_re=form_re, order=id)
     elif request.args.get('submit', None) == 'Delete':
-        order = Order.query.filter_by(id=request.args.get('order', None)).first()
+        order = Order.query.filter_by(id=id).first()
         if order:
             try:
                 order.status = 'Cancelled'
