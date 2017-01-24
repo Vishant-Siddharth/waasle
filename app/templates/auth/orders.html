@@ -10,6 +10,8 @@ Waasle Laundry| Change Password
 {% endblock styles %}
 
 {% block content %}
+
+
 <div class="product-model">
 <div class="container">
 		 <ol class="breadcrumb">
@@ -58,22 +60,26 @@ Waasle Laundry| Change Password
         <div>
 			<table  id="example"  class="display">
             <thead>
-            <th>Ticket ID</th>
-              <th>Date Created</th>
-               <th>Scheduled Date</th>
-              <th>Status</th>
+                <th>Ticket ID</th>
+                <th>Date Created</th>
+                <th>Scheduled Date</th>
+                <th>Status</th>
+                <th>Edit</th>
                 </thead>
-            <tbody>
-
-
-            </tbody>
+            <tbody></tbody>
             <tfoot >
             {% for order in current_user.orders.all() %}
               <tr>
-                  <th><input type="text"  name="amount"   value="{{ order.id }}"  class="search_init" /></th>
-                  <th><input type="text"  name="status"   value="{{ order.timestamp }}"  class="search_init" /></th>
-                  <th><input type="text"  name="amount"   value="{{ order.pick_up }}"  class="search_init" /></th>
-                  <th><input type="text"  name="status"   value="{{ order.status }}"  class="search_init" /></th>
+                  <th><input style="width: 180px; text-align: center" type="text"  name="order"   value="{{ order.id }}"  readonly/></th>
+                  <th><input style="width: 180px; text-align: center" type="text"  name="time"   value="{{ order.timestamp }}"  readonly/></th>
+                  <th><input style="width: 180px; text-align: center" type="text"  id='pick_{{ order.id }}' name="pick"   value="{{ order.pick_up }}"  readonly/></th>
+                  <th><input style="width: 180px; text-align: center" type="text"  name="status"   value="{{ order.status }}"  readonly/></th>
+                  <th>
+                      <form action="{{ url_for('auth.reschedule', order_id= order.id )}}" method='GET' enctype='multipart/form-data'>
+                          <input style="display: none" name="order"   value="{{ order.id }}"/>
+                          <input style="width: 180px; text-align: center;" id='rem_{{ order.id }}' type="submit"  name="submit"   value="Reschedule"/>
+                      </form>
+                  </th>
               </tr>
             {% endfor %}
 
