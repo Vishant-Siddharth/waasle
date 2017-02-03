@@ -17,6 +17,8 @@
 	<link href="{{ url_for('static', filename='css/style.css') }}" rel="stylesheet" type="text/css" media="all" />
 	<link href="{{ url_for('static', filename='css/rate.css') }}" rel="stylesheet" type="text/css" media="all" />
     <link rel="shortcut icon" href="{{ url_for('static', filename='favicon.ico') }}">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+	<link href="https://fonts.googleapis.com/css?family=Sniglet" rel="stylesheet">
 	{% endblock styles %}
 
     {% block scripts %}
@@ -53,13 +55,13 @@
 				<img style="height:70px; width:70px; margin:10px;margin-left:50px;" src="../static/images/Logo.png" alt=""/>
 			</a>
 		</div>
-		<div class="col-sm-8 col-md-8 col-lg-8 col-xs-5">
-			<h1 style="font-family:Dosis-Medium;margin-top: 5px;font-size:40px">Wassle Laundry</h1>
+		<div class="col-sm-8 col-md-8 col-lg-8 col-xs-5" style="font-family:Sniglet;color:#004f6a;text-shadow: 2px 2px #aaaaaa;">
+			<h1 style="margin-top: 5px;font-size:40px">Wassle Laundry</h1>
 			<h3>Sign up Today!</h3>
 		</div>
-		<div class="col-sm-2 col-md-2 col-lg-2 col-xs-3">
-			 <img id="line-1" style="height:auto;width:auto;margin-top:10px;" src="../static/images/smphone.png" alt=""/>
-			 <h3 id="line-2" style="display:inline-block;margin-top:20px">1234567891</h3>
+		<div class="col-sm-2 col-md-2 col-lg-2 col-xs-3" style="font-size:1.5em;margin-top:10px">
+			 <i class="fa fa-mobile" style="color:#2196f3;font-size:1.3em;"></i> 1234567891<br>
+			 <i class="fa fa-whatsapp" style="color:#2196f3;"></i> 1234567891
 		</div>
 	</div>
 			 <!---->
