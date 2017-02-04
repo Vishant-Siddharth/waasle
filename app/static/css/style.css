@@ -1221,6 +1221,7 @@ p.para {
   font-size: 1.2em;
   color:#4e5050;
   line-height: 1.8em;
+  font-family:Dosis-Medium;
 }
 .single-para h5 {
   color:#ed645c;
@@ -1237,6 +1238,7 @@ p.para {
 	color:#4e5050;
 	font-size:1.1em;
 	padding:2px 0;
+  font-family:Dosis-Medium;
 }
 .check p {
     font-size: 0.85em;
