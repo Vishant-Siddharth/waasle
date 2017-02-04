@@ -140,6 +140,7 @@
 			font-size:1em;
 			border-radius:50px;
 			border:4px solid #004f6a;
+			font-family:Pacifico;
 			padding-left:12px;
 		}
 		.circles span{
@@ -165,20 +166,20 @@
 			 <h3 style="margin-top: 80px;">Services</h3>
 		     <div class="horflex">
 				 <div>
-					 <div class="circles"><span class="shover"><img class="himage" src="{{ url_for('static', filename='images/truck.jpg') }}"/></span>Laundry</div>
-					 <div class="circles">Steam Press</div>
-					 <div class="circles">Wash & Fold</div>
-					 <div class="circles">Fabric Conditioner</div>
-					 <div class="circles">Live Processing centre</div>
+					 <div class="circles"><span class="shover"><img class="himage" src="{{ url_for('static', filename='images/laundry.jpg') }}"/></span>Laundry</div>
+					 <div class="circles"><span class="shover"><img class="himage" src="{{ url_for('static', filename='images/steam_press.jpg') }}"/></span>Steam Press</div>
+					 <div class="circles"><span class="shover"><img class="himage" src="{{ url_for('static', filename='images/wash_and_fold.png') }}"/></span>Wash & Fold</div>
+					 <div class="circles"><span class="shover"><img class="himage" src="{{ url_for('static', filename='images/fabric_conditioner.jpg') }}"/></span>Fabric Conditioner</div>
+					 <div class="circles"><span class="shover"><img class="himage" src="{{ url_for('static', filename='images/live_processing_center.jpg') }}"/></span>Live Processing centre</div>
 				 </div>
 				 <div><img src="{{ url_for('static', filename='images/truck.jpg') }}" class="img-responsive" alt="Map" align="middle" style="margin-top:18%"/>
 				 </div>
 				 <div>
-					 <div class="circles">Dry clean</div>
-					 <div class="circles">Free Pick and Drop</div>
-					 <div class="circles">Starching</div>
-					 <div class="circles">Antiseptic Wash</div>
-					 <div class="circles">Fabric Softener</div>
+					 <div class="circles"><span class="shover"><img class="himage" src="{{ url_for('static', filename='images/dryclean.jpg') }}"/></span>Dry clean</div>
+					 <div class="circles"><span class="shover"><img class="himage" src="{{ url_for('static', filename='images/truck.jpg') }}"/></span>Free Pick and Drop</div>
+					 <div class="circles"><span class="shover"><img class="himage" src="{{ url_for('static', filename='images/starching.jpg') }}"/></span>Starching</div>
+					 <div class="circles"><span class="shover"><img class="himage" src="{{ url_for('static', filename='images/antiseptic_wash.jpg') }}"/></span>Antiseptic Wash</div>
+					 <div class="circles"><span class="shover"><img class="himage" src="{{ url_for('static', filename='images/fabric_softener.jpg') }}"/></span>Fabric Softener</div>
 				 </div>
 			 </div>
 
@@ -202,8 +203,8 @@
 				 </div>
 			     <div class="col-md-5 single-top-in simpleCart_shelfItem">
 					  <div class="single-para">
-						 <a href="{{ url_for('main.pricing')}}"><h2>Wash & Fold</h2></a>
-							<h5 class="item_price" style="margin: 0em 0 0.5em;">Rs. {{w_f}} + tax (per kg) </h5>
+						 <a href="{{ url_for('main.pricing')}}"><h2 style="font-family:Dosis-Bold;">Wash & Fold</h2></a>
+							<h5 class="item_price" style="margin: 0em 0 0.5em;font-family:Pacifico;">Rs. {{w_f}} + tax (per kg) </h5>
 							<p class="para">
 								First your clothes are sorted and colors are separated from whites. Then we wash and dry your clothes in separate machines for each customer. Next, your clothes are neatly folded, socks are matched and the clothes are wrapped up nice and tidy like a present.
 							</p>
@@ -230,8 +231,8 @@
 				 </div>
 			     <div class="col-md-5 single-top-in simpleCart_shelfItem">
 					  <div class="single-para ">
-						 <a href="{{ url_for('main.pricing')}}"><h2>Wash & Iron</h2></a>
-							<h5 class="item_price" style="margin: 0em 0 0.5em;">Rs. {{w_i}} + tax (per kg) </h5>
+						 <a href="{{ url_for('main.pricing')}}"><h2 style="font-family:Dosis-Bold;">Wash & Iron</h2></a>
+							<h5 class="item_price" style="margin: 0em 0 0.5em;font-family:Pacifico;">Rs. {{w_i}} + tax (per kg) </h5>
 							<p class="para">
 								First your clothes are sorted and colors are separated from whites. Then we wash and dry your clothes in separate machines. Next, your clothes are steam ironed according to fabric and folded, socks are matched and the clothes are wrapped up nice and tidy like a present.
 							</p>
@@ -259,8 +260,8 @@
 				 </div>
 			     <div class="col-md-5 single-top-in simpleCart_shelfItem">
 					  <div class="single-para ">
-						 <a href="{{ url_for('main.pricing')}}"><h2>Dry Cleaning</h2></a>
-							<h5 class="item_price" style="margin: 0em 0 0.5em;">Rs. {{dc}} + tax (per piece) </h5>
+						 <a href="{{ url_for('main.pricing')}}"><h2 style="font-family:Dosis-Bold;">Dry Cleaning</h2></a>
+							<h5 class="item_price" style="margin: 0em 0 0.5em;font-family:Pacifico;">Rs. {{dc}} + tax (per piece) </h5>
 							<p class="para">
 								Your special wears are washed with special care with tested and safe chemicals so as to make sure the removal of stains, but also adds shine. Requisite ironing is used to make your dress as brand new.
 							</p>
@@ -321,7 +322,7 @@
 				 <div class="col-lg-6">
 			 <div style="padding-top: 20px; margin-top: 80px" class="card">
 				 <img src="{{ url_for('static', filename='images/vision.jpg') }}" class="img-responsive" alt="Map" align="middle"/>
-				 <p class="text-justify">
+				 <p class="text-justify" style="font-family:Sniglet;">
 					 To provide a safe, efficient laundry experience
 				 through superior cleanliness and most outstanding service of our customer.
 				 <p>
@@ -330,7 +331,7 @@
 				 <div class="col-lg-6">
 			 <div class="card">
 				 <img src="{{ url_for('static', filename='images/mission.jpg') }}" class="img-responsive" alt="Map" align="middle"/>
-				 <p class="text-justify">
+				 <p class="text-justify" style="font-family:Sniglet;">
 					 To become Trusted and Reliable laundry services provider and meet the
 					 need of our customer and to simplify their professional life.
 				 <p>
