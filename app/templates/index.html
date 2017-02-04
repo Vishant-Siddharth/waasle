@@ -122,12 +122,63 @@
 		 </div>
 
 	</div>
+	<style>
+		.horflex{
+			display:flex;
+			flex-direction:row;
+			width:100%;
+		}
+		.circles{
+			text-align:center;
+			padding-top:18px;
+			padding-bottom:18px;
+			padding-right:12px;
+			width:100px;
+			height:100px;
+			margin:20px;
+			font-size:1em;
+			border-radius:50px;
+			border:4px solid #2916f3;
+			padding-left:12px;
+		}
+		.circles span{
+			opacity:0;
+			position:absolute;
+		}
+		.circles:hover span{
+			opacity:1;
+			text-align:center;
+			transition:all 0.3s linear;
+		}
+		.himage{
+			width:100px;
+			height:100px;
+			margin-left:-24px;
+			margin-top:-22px;
+			border-radius:50px;
+		}
+
+	</style>
 	<div class="container" id="location">
 			 <br><br><br>
 			 <h3 style="margin-top: 80px;">Services</h3>
-		     <div style="margin-top: 80px; max-width: 50%;">
-				 <img src="{{ url_for('static', filename='images/truck.jpg') }}" class="img-responsive" alt="Map" align="middle" style="margin-right: 50%; margin-left: 50%;"/>
-
+		     <div class="horflex">
+				 <div>
+					 <div class="circles"><span class="shover"><img class="himage" src="{{ url_for('static', filename='images/truck.jpg') }}"/></span>Laundry</div>
+					 <div class="circles">Steam Press</div>
+					 <div class="circles">Wash & Fold</div>
+					 <div class="circles">Fabric Conditioner</div>
+					 <div class="circles">Live Processing centre</div>
+				 </div>
+				 <div><img src="{{ url_for('static', filename='images/truck.jpg') }}" class="img-responsive" alt="Map" align="middle" style="margin-top:18%"/>
+				 </div>
+				 <div>
+					 <div class="circles">Dry clean</div>
+					 <div class="circles">Free Pick and Drop</div>
+					 <div class="circles">Starching</div>
+					 <div class="circles">Antiseptic Wash</div>
+					 <div class="circles">Fabric Softener</div>
+				 </div>
 			 </div>
 
 		 </div>
@@ -260,19 +311,13 @@
 				 <center>
 					 <ul>
 						 <li>
-							 Laundry
+
 						 </li>
 						 <li>
-							 Steam Press
+
 						 </li>
-							 Dry clean
-						 <li>Wash & Fold</li>
-						 <li>Free Pick and Drop</li>
-							 <li>Starching</li>
-<li>Antiseptic Wash</li>
-<li>Fabric Softener</li>
-<li>Fabric Conditioner</li>
-<li>Live Processing centre</li>
+
+
 
 
 					 </ul>
