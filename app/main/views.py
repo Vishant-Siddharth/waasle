@@ -55,25 +55,10 @@ def faq():
 
 @main.route('/location', methods=['GET', 'POST'])
 def location():
-    return render_template('location.html')
+    return redirect(url_for('main.contact'))
 
 
-@main.route('/services', methods=['GET', 'POST'])
-def services():
-    return render_template('services.html')
-
-
-@main.route('/mission', methods=['GET', 'POST'])
-def mission():
-    return render_template('mission.html')
-
-
-@main.route('/vision', methods=['GET', 'POST'])
-def vision():
-    return render_template('vision.html')
-
-
-@main.route('/blog', methods=['GET', 'POST'])
+@main.route('/blog')
 def blog():
     return redirect(url_for('main.index'))
 
@@ -159,8 +144,3 @@ def unsubscribe():
             for i, v in form_sub.errors.items():
                 flash(v[0])
         return redirect(url_for('main.index'))
-
-
-#@main.route('/single')
-def base():
-    return render_template('single.html')
