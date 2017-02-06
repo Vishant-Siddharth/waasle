@@ -1,0 +1,172 @@
+
+.wrap {
+    width:960px;
+    margin:0 auto;
+}
+
+.one_half {
+    float:left;
+    width:47%;
+    margin:0 6% 0 0;
+}
+.one_third {
+    width:30%;
+    float:left;
+    margin-right:5%;
+}
+.two_thirds {
+    float:left;
+    width:65%;
+    margin:0 5% 0 0;
+}
+.one_fourth {
+    width:23%;
+    float:left;
+    margin-right:2.6%;
+}
+.one_fifth {
+    float:left;
+    width:18%;
+    margin:0 2.5% 0 0;
+}
+.last {
+    margin-right: 0 !important;
+}
+.last2 {
+    margin-bottom: 0 !important;
+}
+
+
+/*******************************************************************************************************/
+/* icon wrapper */
+/*******************************************************************************************************/
+
+.icons_wrapper i {
+    width:20px !important;
+    padding:0 10px 0 0;
+    display:inline-block;
+    color: #6ab2dc;
+    text-align:right;
+}
+.icons_wrapper li:hover i {
+    color: #000;
+    font-size:20px;
+}
+
+.pricing_wrapper {
+    position:relative;
+    z-index:99 !important;
+}
+.pricing {
+    position:relative;
+    background: #6ab2dc;
+    border:1px solid #6ab2dc;
+    text-align:center;
+    overflow: hidden;
+
+    -moz-border-radius: 3px;
+    -webkit-border-radius: 3px;
+    border-radius: 3px;
+}
+.pricing h4 {
+    text-transform: capitalize;
+    color: #fff;
+    font-weight: normal;
+    margin-bottom:10px;
+}
+.pricing_top {
+    padding:40px 0;
+
+    -webkit-border-top-left-radius: 3px;
+    -webkit-border-top-right-radius: 3px;
+    -moz-border-radius-topleft: 3px;
+    -moz-border-radius-topright: 3px;
+    border-top-left-radius: 3px;
+    border-top-right-radius: 3px;
+
+    -webkit-transition:all 200ms ease-in;
+    -o-transition:all 200ms ease-in;
+    -moz-transition:all 200ms ease-in;
+    transition:all 200ms ease-in;
+}
+.pricing i {
+    color: #6ab2dc;
+}
+.pricing_top p {
+    color: #fff;
+    margin-bottom: 0;
+    font-size: 24px;
+    font-weight:bold;
+}
+.pricing ul {
+    padding:20px 0 0px 0;
+    margin-top:-10px;
+    line-height:35px;
+
+    -webkit-transition:all 200ms ease-in;
+    -o-transition:all 200ms ease-in;
+    -moz-transition:all 200ms ease-in;
+    transition:all 200ms ease-in;
+}
+.pricing ul li {
+    font-size:13px;
+    background: #fff;
+    padding:7px 0;
+    margin:1px 0 0 0;
+    -webkit-transition:all 200ms ease-in;
+    -o-transition:all 200ms ease-in;
+    -moz-transition:all 200ms ease-in;
+    transition:all 200ms ease-in;
+}
+.pricing ul li:hover {
+    background: #6ab2dc;
+    color: #fff;
+}
+.pricing ul li:hover i {
+    color: #fff;
+}
+.pricing li.pricing_order {
+    padding:0;
+}
+.pricing li.pricing_order a {
+    font-size:17px;
+    color: #6ab2dc;
+    display: block;
+    padding:14px 0 !important;
+}
+.pricing ul li:hover a {
+    color: #fff;
+}
+.pricing ul li:last-child { margin-bottom: 0; }
+
+.pricing_best .pricing_order a {
+    background: #6ab2dc;
+    color: #fff;
+}
+.pricing_best .pricing_order:hover a {
+    background: #000;
+    color: #fff;
+}
+
+.pricing_ribbon {
+    background: #222;
+    overflow: hidden;
+    position: absolute;
+    right: -70px;
+    top: 10px;
+
+    -moz-transform: rotate(45deg);
+    -webkit-transform: rotate(45deg);
+    transform: rotate(45deg);
+}
+.pricing_ribbon p {
+    text-transform: uppercase;
+    color: #fff;
+    display: block;
+    margin:0;
+    padding: 5px 0;
+    width:200px;
+    text-align: center;
+    text-decoration: none;
+}
+
