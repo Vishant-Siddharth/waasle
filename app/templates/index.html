@@ -276,11 +276,100 @@
 							</div>
 					 </div>
 				 </div>
-				 <div class="clearfix"> </div>
 			 </div>
-	     </div>
+		 </div>
 	 </div>
-</div>
+	</div>
+	<div class="content">
+		<div class="wrap">
+			<h3 style="margin-top: 80px;">Packages for You</h3>
+		 <br><br>
+        <div class="pricing_wrapper">
+            <div class="one_fourth">
+                <div class="pricing">
+                    <div class="pricing_top">
+                        <img src="../static/images/category.png"/>
+                        <h4>Package</h4>
+                        <p>Price</p>
+                    </div>
+
+                    <ul>
+                        <li><i class="icon-hdd"></i><strong>No of Clothes</strong></li>
+                        <li><i class="icon-dashboard"></i><strong>You Pay</strong> </li>
+                        <li><i class="icon-envelope"></i><strong>You Save</strong> </li>
+                        <li><i class="icon-globe"></i><strong>Free Pickup & Delivery</strong> </li>
+                        <li><i class="icon-globe"></i><strong>Validity</strong> </li>
+                        <li><strong>Purchase</strong> </li>
+                    </ul>
+                </div>
+            </div>
+                        <div class="one_fourth ">
+                            <div class="pricing">
+                                <div class="pricing_ribbon">
+                                    <!--<p>sale</p>-->
+                                </div>
+                                <div class="pricing_top">
+                                    <img src="../static/images/single.png"/>
+                                    <h4>Single</h4>
+                                    <p>Rs.799 / Month</p>
+                                </div>
+
+                                <ul>
+                                    <li><i class="icon-hdd"></i><strong>50</strong></li>
+                                    <li><i class="icon-envelope"></i><strong>Rs. 799</strong> </li>
+                                    <li><i class="icon-dashboard"></i><strong>35%</strong></li>
+                                    <li><i class="icon-globe"></i><strong>Biweekly</strong> </li>
+                                    <li><i class="icon-globe"></i><strong>1 month</strong> </li>
+                                    <li class="pricing_order"><a href="{{ url_for('auth.book_now') }}">Order Now</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="one_fourth ">
+                            <div class="pricing">
+                                <div class="pricing_ribbon">
+                                    <!--<p>sale</p>-->
+                                </div>
+                                <div class="pricing_top">
+                                    <img src="../static/images/family.png"/>
+                                    <h4>Couple</h4>
+                                    <p>Rs.1499 / Month</p>
+                                </div>
+
+                                <ul>
+                                    <li><i class="icon-hdd"></i><strong>100</strong></li>
+                                    <li><i class="icon-envelope"></i><strong>Rs. 1499</strong> </li>
+                                    <li><i class="icon-dashboard"></i><strong>40%</strong></li>
+                                    <li><i class="icon-globe"></i><strong>Biweekly</strong> </li>
+                                    <li><i class="icon-globe"></i><strong>1 month</strong> </li>
+                                    <li class="pricing_order"><a href="{{ url_for('auth.book_now') }}">Order Now</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="one_fourth last">
+                            <div class="pricing">
+                                <div class="pricing_ribbon">
+                                    <!--<p>sale</p>-->
+                                </div>
+                                <div class="pricing_top">
+                                    <img src="../static/images/couple.png"/>
+                                    <h4>Family</h4>
+                                    <p>Rs.1999 / Month</p>
+                                </div>
+
+                                <ul>
+                                    <li><i class="icon-hdd"></i><strong>150</strong></li>
+                                    <li><i class="icon-envelope"></i><strong>Rs. 1999</strong> </li>
+                                    <li><i class="icon-dashboard"></i><strong>45%</strong></li>
+                                    <li><i class="icon-globe"></i><strong>Biweekly</strong> </li>
+                                    <li><i class="icon-globe"></i><strong>1 month</strong> </li>
+                                    <li class="pricing_order"><a href="{{ url_for('auth.book_now') }}">Order Now</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                            </div>
+
+		</div>
+	</div>
 		 <div class="container" id="mission&vision">
 			 <style>
 				 .card{
@@ -329,7 +418,7 @@
 			 </div></div>
 
 				 <div class="col-lg-6">
-			 <div class="card">
+			 <div style="padding-top: 20px; margin-top: 80px" class="card">
 				 <img src="{{ url_for('static', filename='images/mission.jpg') }}" class="img-responsive" alt="Map" align="middle"/>
 				 <p class="text-justify" style="font-family:Sniglet;">
 					 To become Trusted and Reliable laundry services provider and meet the
