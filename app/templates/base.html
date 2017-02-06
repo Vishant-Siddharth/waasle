@@ -150,9 +150,9 @@
 					<h3>Information</h3>
 					<ul class="nav-bottom">
 						<li><a href="{{ url_for('main.location') }}">Location</a></li>
-						<li><a href="{{ url_for('main.services') }}">Services</a></li>
-						<li><a href="{{ url_for('main.mission') }}">Our Mission</a></li>
-						<li><a href="{{ url_for('main.vision') }}">Our Vision</a></li>
+						<li><a href="{{ url_for('main.index', _anchor='services') }}">Services</a></li>
+						<li><a href="{{ url_for('main.index', _anchor='mission&vision') }}">Our Mission</a></li>
+						<li><a href="{{ url_for('main.index', _anchor='mission&vision') }}">Our Vision</a></li>
 					</ul>
 			 </div>
 			 <div class="col-md-3 ftr-grid">
