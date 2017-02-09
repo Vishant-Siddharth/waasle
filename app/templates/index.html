@@ -13,7 +13,7 @@
 	         <li>
 				 <div class="banner1">				  
 					  <div class="banner-info">
-					  <h1 >Waasle Laundry</h1>
+					  <h3>Waasle Laundry</h3>
 					  <p>To save Time and Money</p>
 					  </div>
 				 </div>
@@ -21,7 +21,7 @@
 	         <li>
 				 <div class="banner2">
 					 <div class="banner-info">
-					 <h1>5 start customer service</h1>
+					 <h3>5 start customer service</h3>
 					 <p>We put you before anything.</p>
 					 </div>
 				 </div>
@@ -29,7 +29,7 @@
 	         <li>
 	             <div class="banner3">
 	        	 	<div class="banner-info">
-	        	 	<h1>Doorstep delivery</h1>
+	        	 	<h3>Doorstep delivery</h3>
 	          	 	<p>We deliver at your doorstep</p>
 				 	</div>
 				 </div>
@@ -37,7 +37,7 @@
 			 <li>
 				 <div class="banner4">
 					  <div class="banner-info">
-					  <h1>Nothing Beats us</h1>
+					  <h3>Nothing Beats us</h3>
 					  <p>To save Time and Money</p>
 					  </div>
 				 </div>
@@ -122,6 +122,99 @@
 		 </div>
 
 	</div>
+	<div class="content">
+		<div class="wrap">
+			<h3 style="margin-top: 80px;">Packages for You</h3>
+		 <br><br>
+			<style>
+
+			</style>
+        <div class="row" style="width:90%;margin-left:auto;margin-right:auto;">
+            <div class="col-sm-3">
+                <div class="pricing">
+                    <div class="pricing_top">
+                        <img src="../static/images/category.png"/>
+                        <h4>Package</h4>
+                        <p>Price</p>
+                    </div>
+
+                    <ul>
+                        <li><i class="icon-hdd"></i><strong>No of Clothes</strong></li>
+                        <li><i class="icon-dashboard"></i><strong>You Pay</strong> </li>
+                        <li><i class="icon-envelope"></i><strong>You Save</strong> </li>
+                        <li><i class="icon-globe"></i><strong>Free Pickup & Delivery</strong> </li>
+                        <li><i class="icon-globe"></i><strong>Validity</strong> </li>
+                        <li><strong>Purchase</strong> </li>
+                    </ul>
+                </div>
+            </div>
+                        <div class="col-sm-3">
+                            <div class="pricing">
+                                <div class="pricing_ribbon">
+                                    <!--<p>sale</p>-->
+                                </div>
+                                <div class="pricing_top">
+                                    <img src="../static/images/single.png"/>
+                                    <h4>Single</h4>
+                                    <p>Rs.799 / Month</p>
+                                </div>
+
+                                <ul>
+                                    <li><i class="icon-hdd"></i><strong>50</strong></li>
+                                    <li><i class="icon-envelope"></i><strong>Rs. 799</strong> </li>
+                                    <li><i class="icon-dashboard"></i><strong>35%</strong></li>
+                                    <li><i class="icon-globe"></i><strong>Biweekly</strong> </li>
+                                    <li><i class="icon-globe"></i><strong>1 month</strong> </li>
+                                    <li class="pricing_order"><a href="{{ url_for('auth.book_now') }}">Order Now</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="pricing">
+                                <div class="pricing_ribbon">
+                                    <!--<p>sale</p>-->
+                                </div>
+                                <div class="pricing_top">
+                                    <img src="../static/images/family.png"/>
+                                    <h4>Couple</h4>
+                                    <p>Rs.1499 / Month</p>
+                                </div>
+
+                                <ul>
+                                    <li><i class="icon-hdd"></i><strong>100</strong></li>
+                                    <li><i class="icon-envelope"></i><strong>Rs. 1499</strong> </li>
+                                    <li><i class="icon-dashboard"></i><strong>40%</strong></li>
+                                    <li><i class="icon-globe"></i><strong>Biweekly</strong> </li>
+                                    <li><i class="icon-globe"></i><strong>1 month</strong> </li>
+                                    <li class="pricing_order"><a href="{{ url_for('auth.book_now') }}">Order Now</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="col-sm-3">
+                            <div class="pricing">
+                                <div class="pricing_ribbon">
+                                    <!--<p>sale</p>-->
+                                </div>
+                                <div class="pricing_top">
+                                    <img src="../static/images/couple.png"/>
+                                    <h4>Family</h4>
+                                    <p>Rs.1999 / Month</p>
+                                </div>
+
+                                <ul>
+                                    <li><i class="icon-hdd"></i><strong>150</strong></li>
+                                    <li><i class="icon-envelope"></i><strong>Rs. 1999</strong> </li>
+                                    <li><i class="icon-dashboard"></i><strong>45%</strong></li>
+                                    <li><i class="icon-globe"></i><strong>Biweekly</strong> </li>
+                                    <li><i class="icon-globe"></i><strong>1 month</strong> </li>
+                                    <li class="pricing_order"><a href="{{ url_for('auth.book_now') }}">Order Now</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                            </div>
+
+		</div>
+	</div>
 	<style>
 		.horflex{
 			display:flex;
@@ -137,10 +230,10 @@
 			width:100px;
 			height:100px;
 			margin:20px;
-			font-size:1em;
+			font-size:1.2em;
 			border-radius:50px;
 			border:4px solid #004f6a;
-			font-family:Pacifico;
+			font-family:Dosis-Medium;
 			padding-left:12px;
 		}
 		.circles span{
@@ -152,10 +245,17 @@
 			text-align:center;
 			transition:all 0.3s linear;
 		}
-		.himage{
+		.himage-left{
 			width:100px;
 			height:100px;
-			margin-left:-24px;
+			margin-left:75px;
+			margin-top:-22px;
+			border-radius:50px;
+		}
+		.himage-right{
+			width:100px;
+			height:100px;
+			margin-left:-145px;
 			margin-top:-22px;
 			border-radius:50px;
 		}
@@ -166,20 +266,20 @@
 			 <h3 style="margin-top: 80px;">Services</h3>
 		     <div class="horflex">
 				 <div>
-					 <div class="circles"><span class="shover"><img class="himage" src="{{ url_for('static', filename='images/laundry.jpg') }}"/></span>Laundry</div>
-					 <div class="circles"><span class="shover"><img class="himage" src="{{ url_for('static', filename='images/steam_press.jpg') }}"/></span>Steam Press</div>
-					 <div class="circles"><span class="shover"><img class="himage" src="{{ url_for('static', filename='images/wash_and_fold.png') }}"/></span>Wash & Fold</div>
-					 <div class="circles"><span class="shover"><img class="himage" src="{{ url_for('static', filename='images/fabric_conditioner.jpg') }}"/></span>Fabric Conditioner</div>
-					 <div class="circles"><span class="shover"><img class="himage" src="{{ url_for('static', filename='images/live_processing_center.jpg') }}"/></span>Live Processing centre</div>
+					 <div class="circles"><span class="shover"><img class="himage-left" src="{{ url_for('static', filename='images/laundry.jpg') }}"/></span>Laundry</div>
+					 <div class="circles"><span class="shover"><img class="himage-left" src="{{ url_for('static', filename='images/steam_press.jpg') }}"/></span>Steam Press</div>
+					 <div class="circles"><span class="shover"><img class="himage-left" src="{{ url_for('static', filename='images/wash_and_fold.png') }}"/></span>Wash & Fold</div>
+					 <div class="circles"><span class="shover"><img class="himage-left" src="{{ url_for('static', filename='images/fabric_conditioner.jpg') }}"/></span>Fabric Conditioner</div>
+					 <div class="circles"><span class="shover"><img class="himage-left" src="{{ url_for('static', filename='images/live_processing_center.jpg') }}"/></span>Live Processing centre</div>
 				 </div>
-				 <div><img src="{{ url_for('static', filename='images/truck.jpg') }}" class="img-responsive" alt="Map" align="middle" style="margin-top:18%"/>
+				 <div><img src="{{ url_for('static', filename='images/truck.png') }}" class="img-responsive" alt="Map" align="middle" style="margin-top:18%"/>
 				 </div>
 				 <div>
-					 <div class="circles"><span class="shover"><img class="himage" src="{{ url_for('static', filename='images/dryclean.jpg') }}"/></span>Dry clean</div>
-					 <div class="circles"><span class="shover"><img class="himage" src="{{ url_for('static', filename='images/truck.jpg') }}"/></span>Free Pick and Drop</div>
-					 <div class="circles"><span class="shover"><img class="himage" src="{{ url_for('static', filename='images/starching.jpg') }}"/></span>Starching</div>
-					 <div class="circles"><span class="shover"><img class="himage" src="{{ url_for('static', filename='images/antiseptic_wash.jpg') }}"/></span>Antiseptic Wash</div>
-					 <div class="circles"><span class="shover"><img class="himage" src="{{ url_for('static', filename='images/fabric_softener.jpg') }}"/></span>Fabric Softener</div>
+					 <div class="circles"><span class="shover"><img class="himage-right" src="{{ url_for('static', filename='images/dryclean.jpg') }}"/></span>Dry clean</div>
+					 <div class="circles"><span class="shover"><img class="himage-right" src="{{ url_for('static', filename='images/delivery.jpg') }}"/></span>Free Pick and Drop</div>
+					 <div class="circles"><span class="shover"><img class="himage-right" src="{{ url_for('static', filename='images/starching.jpg') }}"/></span>Starching</div>
+					 <div class="circles"><span class="shover"><img class="himage-right" src="{{ url_for('static', filename='images/antiseptic_wash.jpg') }}"/></span>Antiseptic Wash</div>
+					 <div class="circles"><span class="shover"><img class="himage-right" src="{{ url_for('static', filename='images/fabric_softener.jpg') }}"/></span>Fabric Softener</div>
 				 </div>
 			 </div>
 
@@ -280,96 +380,7 @@
 		 </div>
 	 </div>
 	</div>
-	<div class="content">
-		<div class="wrap">
-			<h3 style="margin-top: 80px;">Packages for You</h3>
-		 <br><br>
-        <div class="pricing_wrapper">
-            <div class="one_fourth">
-                <div class="pricing">
-                    <div class="pricing_top">
-                        <img src="../static/images/category.png"/>
-                        <h4>Package</h4>
-                        <p>Price</p>
-                    </div>
 
-                    <ul>
-                        <li><i class="icon-hdd"></i><strong>No of Clothes</strong></li>
-                        <li><i class="icon-dashboard"></i><strong>You Pay</strong> </li>
-                        <li><i class="icon-envelope"></i><strong>You Save</strong> </li>
-                        <li><i class="icon-globe"></i><strong>Free Pickup & Delivery</strong> </li>
-                        <li><i class="icon-globe"></i><strong>Validity</strong> </li>
-                        <li><strong>Purchase</strong> </li>
-                    </ul>
-                </div>
-            </div>
-                        <div class="one_fourth ">
-                            <div class="pricing">
-                                <div class="pricing_ribbon">
-                                    <!--<p>sale</p>-->
-                                </div>
-                                <div class="pricing_top">
-                                    <img src="../static/images/single.png"/>
-                                    <h4>Single</h4>
-                                    <p>Rs.799 / Month</p>
-                                </div>
-
-                                <ul>
-                                    <li><i class="icon-hdd"></i><strong>50</strong></li>
-                                    <li><i class="icon-envelope"></i><strong>Rs. 799</strong> </li>
-                                    <li><i class="icon-dashboard"></i><strong>35%</strong></li>
-                                    <li><i class="icon-globe"></i><strong>Biweekly</strong> </li>
-                                    <li><i class="icon-globe"></i><strong>1 month</strong> </li>
-                                    <li class="pricing_order"><a href="{{ url_for('auth.book_now') }}">Order Now</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="one_fourth ">
-                            <div class="pricing">
-                                <div class="pricing_ribbon">
-                                    <!--<p>sale</p>-->
-                                </div>
-                                <div class="pricing_top">
-                                    <img src="../static/images/family.png"/>
-                                    <h4>Couple</h4>
-                                    <p>Rs.1499 / Month</p>
-                                </div>
-
-                                <ul>
-                                    <li><i class="icon-hdd"></i><strong>100</strong></li>
-                                    <li><i class="icon-envelope"></i><strong>Rs. 1499</strong> </li>
-                                    <li><i class="icon-dashboard"></i><strong>40%</strong></li>
-                                    <li><i class="icon-globe"></i><strong>Biweekly</strong> </li>
-                                    <li><i class="icon-globe"></i><strong>1 month</strong> </li>
-                                    <li class="pricing_order"><a href="{{ url_for('auth.book_now') }}">Order Now</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                        <div class="one_fourth last">
-                            <div class="pricing">
-                                <div class="pricing_ribbon">
-                                    <!--<p>sale</p>-->
-                                </div>
-                                <div class="pricing_top">
-                                    <img src="../static/images/couple.png"/>
-                                    <h4>Family</h4>
-                                    <p>Rs.1999 / Month</p>
-                                </div>
-
-                                <ul>
-                                    <li><i class="icon-hdd"></i><strong>150</strong></li>
-                                    <li><i class="icon-envelope"></i><strong>Rs. 1999</strong> </li>
-                                    <li><i class="icon-dashboard"></i><strong>45%</strong></li>
-                                    <li><i class="icon-globe"></i><strong>Biweekly</strong> </li>
-                                    <li><i class="icon-globe"></i><strong>1 month</strong> </li>
-                                    <li class="pricing_order"><a href="{{ url_for('auth.book_now') }}">Order Now</a></li>
-                                </ul>
-                            </div>
-                        </div>
-                            </div>
-
-		</div>
-	</div>
 		 <div class="container" id="mission&vision">
 			 <style>
 				 .card{
@@ -406,10 +417,13 @@
 				 	display:flex;
 				 	flex-direction:row;
 				 }
+				 .img-responsive{
+				 	padding:20px;
+				 }
 			 </style>
 			 <div class="row">
 				 <div class="col-lg-6">
-			 <div style="padding-top: 20px; margin-top: 80px" class="card">
+			 <div style="padding-top: 20px; margin-top: 80px" class="card img-responsive">
 				 <img src="{{ url_for('static', filename='images/vision.jpg') }}" class="img-responsive" alt="Map" align="middle"/>
 				 <p class="text-justify" style="font-family:Sniglet;">
 					 To provide a safe, efficient laundry experience
@@ -418,7 +432,7 @@
 			 </div></div>
 
 				 <div class="col-lg-6">
-			 <div style="padding-top: 20px; margin-top: 80px" class="card">
+			 <div style="padding-top: 20px; margin-top: 80px" class="card img-responsive">
 				 <img src="{{ url_for('static', filename='images/mission.jpg') }}" class="img-responsive" alt="Map" align="middle"/>
 				 <p class="text-justify" style="font-family:Sniglet;">
 					 To become Trusted and Reliable laundry services provider and meet the
