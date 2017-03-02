@@ -76,12 +76,10 @@ Waasle Laundry| Change Password
         <form action="{{ url_for('auth.reschedule')}}" method='GET' enctype='multipart/form-data'>
   			{{ form_re.csrf_token }}
 			<div>
-				<p>
 				{% for subfield in form_re.choice %}
-        			{{ subfield(onclick="myFunction('%s')" %subfield.id) }}
-        			{{ subfield.label }}
+        		&nbsp;&nbsp;&nbsp;<span style="display:inline-block">{{ subfield.label() }}</span>
+				&nbsp;&nbsp;&nbsp;<span>{{ subfield(onclick="myFunction('%s')" %subfield.id) }}</span>
 	    		{% endfor %}
-    			</p>
 			</div>
 			<div style="display:none;">
 				<span>{{ form_re.order(**{'id': 'ord','value': order}) }}</span>
@@ -96,18 +94,14 @@ Waasle Laundry| Change Password
 				<span>{{ form_re.address_2(**{'placeholder': "Address Line 2", 'id': 'add2','value': current_user.address_2, 'tabindex':"7", 'readonly': 'readonly'}) }}</span>
 			</div>
 			<div>
-				<span>{{ form_re.city(**{'placeholder': "City", 'id': 'city', 'value': current_user.city, 'tabindex':"8", 'readonly': 'readonly'}) }}</span>
-			</div>
-			<div>
-				<span>{{ form_re.pincode(**{'placeholder': "Pincode", 'id': 'pincode', 'value': current_user.pincode, 'tabindex':"8", 'readonly': 'readonly'}) }}</span>
+				<span style="display:inline-block">{{ form_re.city.label() }}</span><span>&nbsp;&nbsp;&nbsp;{{ form_re.city(**{'id': 'city', 'value': current_user.city, 'readonly': 'readonly', 'tabindex':"8"}) }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<span style="display:inline-block">{{ form_re.pincode.label() }}</span><span>&nbsp;&nbsp;&nbsp;{{ form_re.pincode(**{'id': 'pincode', 'value': current_user.pincode, 'readonly': 'readonly', 'tabindex':"8"}) }}</span>
 			</div>
 			<div>
 				<span>{{ form_re.date(**{'placeholder': "Date", 'tabindex':"10", 'type': 'date', }) }}</span>
 			</div>
 			<div>
-				<span>{{ form_re.submit() }}</span>
-			</div>
-			<div>
+				<span style="display:inline-block">{{ form_re.submit() }}</span>
 				<span><input id="del" name="submit" type="submit" value="Delete"></span>
 			</div>
 

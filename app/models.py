@@ -122,7 +122,7 @@ class Product(db.Model):
     __tablename__ = 'products'
     id = db.Column(db.Integer, primary_key=True)
     price = db.Column(db.Integer, nullable=False)
-    type = db.Column(db.Integer, nullable=False)    #1:Wash & Fold, 2:Wash & Iron, 3:Dry cleaning
+    type = db.Column(db.String(64), nullable=False)
 
 
 class Subscription(db.Model):
