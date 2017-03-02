@@ -72,12 +72,10 @@
         <form action="{{ url_for('auth.book_now')}}" method='GET' enctype='multipart/form-data'>
   			{{ form_book.csrf_token }}
 			<div>
-				<p>
 				{% for subfield in form_book.choice %}
-        			{{ subfield(onclick="myFunction('%s')" %subfield.id) }}
-        			{{ subfield.label }}
+        		&nbsp;&nbsp;&nbsp;<span style="display:inline-block">{{ subfield.label() }}</span>
+				&nbsp;&nbsp;&nbsp;<span>{{ subfield(onclick="myFunction('%s')" %subfield.id) }}</span>
 	    		{% endfor %}
-    			</p>
 			</div>
 			<div>
 				<span>{{ form_book.number(**{'placeholder': "Number", 'id': 'mob','value': current_user.mob, 'tabindex':"3", 'readonly': 'readonly'}) }}</span>
@@ -89,10 +87,8 @@
 				<span>{{ form_book.address_2(**{'placeholder': "Address Line 2", 'id': 'add2','value': current_user.address_2, 'tabindex':"7", 'readonly': 'readonly'}) }}</span>
 			</div>
 			<div>
-				<span>{{ form_book.city(**{'placeholder': "City", 'id': 'city', 'value': current_user.city, 'tabindex':"8", 'readonly': 'readonly'}) }}</span>
-			</div>
-			<div>
-				<span>{{ form_book.pincode(**{'placeholder': "Pincode", 'id': 'pincode', 'value': current_user.pincode, 'tabindex':"8", 'readonly': 'readonly'}) }}</span>
+				<span style="display:inline-block">{{ form_book.city.label() }}</span><span>&nbsp;&nbsp;&nbsp;{{ form_book.city(**{'id': 'city', 'value': current_user.city, 'readonly': 'readonly', 'tabindex':"8"}) }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+				<span style="display:inline-block">{{ form_book.pincode.label() }}</span><span>&nbsp;&nbsp;&nbsp;{{ form_book.pincode(**{'id': 'pincode', 'value': current_user.pincode, 'readonly': 'readonly', 'tabindex':"8"}) }}</span>
 			</div>
 			<div>
 				<span>{{ form_book.date(**{	'placeholder': "Date", 'tabindex':"10", 'type': 'date'}) }}</span>

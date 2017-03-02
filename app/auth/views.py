@@ -68,7 +68,7 @@ def login():
                         user.address_1 = form_register.address_1.data
                         user.address_2 = form_register.address_2.data
                         user.city = form_register.city.data
-                        user.pincode = form_register.pincode.data
+                        user.pincode = int(form_register.pincode.data)
                         db.session.add(user)
                         db.session.commit()
                         try:

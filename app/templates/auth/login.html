@@ -85,15 +85,19 @@ Waasle Laundry| Account
 					<div>
 						<span>{{ form_reg.address_2(**{'placeholder': "Address Line 2", 'tabindex':"7"}) }}</span>
 					</div>
+					<style>
+						select{
+							width:150px;
+							height:30px;
+						}
+					</style>
 					<div>
-						<span>{{ form_reg.city(**{'placeholder': "City", 'tabindex':"8"}) }}</span>
-					</div>						
-					<div>
-						<span>{{ form_reg.pincode(**{'placeholder': "Pincode", 'tabindex':"8"}) }}</span>
+						<span style="display:inline-block">{{ form_reg.city.label() }}</span><span>&nbsp;&nbsp;&nbsp;{{ form_reg.city(**{'tabindex':"8"}) }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+						<span style="display:inline-block">{{ form_reg.pincode.label() }}</span><span>&nbsp;&nbsp;&nbsp;{{ form_reg.pincode(**{'tabindex':"8"}) }}</span>
 					</div>	
 					<div>
-						<span>{{ form_reg.terms(**{'tabindex':"9"}) }}</span>
-						<span>I agree the <a class="terms" href="{{ url_for('main.t_and_q') }}">{{ form_reg.terms.label() }}</a></span>
+						<span>{{ form_reg.terms(**{'tabindex':"9"}) }}</span>&nbsp;&nbsp;&nbsp;<span style="display:inline-block">{{ form_reg.terms.label() }}</span>
+						<span><a class="terms" href="{{ url_for('main.t_and_q') }}">Term & Conditions</a></span>
 					</div>
 					<div>
 						<span>{{ form_reg.recaptcha() }}</span>
