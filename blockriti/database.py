@@ -13,5 +13,5 @@ class Subscribe(Base):
     email = Column(String(80), nullable=False, unique=True)
 
 
-engine = create_engine('sqlite:///blockriti.db')
+engine = create_engine('mysql+pymysql://root:mysql@127.0.0.1:3306/blockriti')
 Base.metadata.create_all(engine)

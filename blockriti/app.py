@@ -4,21 +4,11 @@ from sqlalchemy.orm import sessionmaker
 from database import Subscribe, Base
 
 
-engine = create_engine('sqlite:///blockriti.db')
+engine = create_engine('mysql+pymysql://root:mysql@127.0.0.1:3306/blockriti')
 Base.metadata.bind = engine
 Data_session = sessionmaker(bind=engine)
 session = Data_session()
 app = Flask(__name__)
-
-
-@app.route('/email_data_blockriti')
-def database():
-    tmp = ''
-    t = []
-    for i in session.query(Subscribe).all():
-        tmp += '<br>' + i.email
-        t.append(i.email)
-    return tmp
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -36,4 +26,4 @@ def coming_soon():
     return redirect(url_for('coming_soon'))
 
 if __name__ == "__main__":
-    app.run(debug=True, host='0.0.0.0', port=8888)
+    app.run()
