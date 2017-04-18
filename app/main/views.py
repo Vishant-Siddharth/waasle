@@ -68,6 +68,11 @@ def why_us():
     return render_template('why-us.html')
 
 
+@main.route('/about-us', methods=['GET', 'POST'])
+def about_us():
+    return render_template('about_us.html')
+
+
 @main.route('/terms-&-conditions')
 def t_and_q():
     return 'terms-&-conditions'
