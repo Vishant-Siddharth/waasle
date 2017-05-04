@@ -55,7 +55,22 @@ def faq():
 
 @main.route('/location', methods=['GET', 'POST'])
 def location():
-    return redirect(url_for('main.contact'))
+    return render_template('location.html')
+
+
+@main.route('/services', methods=['GET', 'POST'])
+def services():
+    return render_template('services.html')
+
+
+@main.route('/our_mission', methods=['GET', 'POST'])
+def mission():
+    return render_template('mission.html')
+
+
+@main.route('/our_vision', methods=['GET', 'POST'])
+def vision():
+    return render_template('vision.html')
 
 
 @main.route('/blog')
