@@ -63,17 +63,19 @@ Waasle Laundry| Change Password
                 <th>Ticket ID</th>
                 <th>Date Created</th>
                 <th>Scheduled Date</th>
-                <th>Status</th>
+                <th>Service</th>
+								<th>Status</th>
                 <th>Edit</th>
                 </thead>
             <tbody></tbody>
             <tfoot >
             {% for order in current_user.orders.all() %}
               <tr>
-                  <th><input style="width: 180px; text-align: center" type="text"  name="order"   value="{{ order.id }}"  readonly/></th>
-                  <th><input style="width: 180px; text-align: center" type="text"  name="time"   value="{{ order.timestamp }}"  readonly/></th>
-                  <th><input style="width: 180px; text-align: center" type="text"  id='pick_{{ order.id }}' name="pick"   value="{{ order.pick_up }}"  readonly/></th>
-                  <th><input style="width: 180px; text-align: center" type="text"  name="status"   value="{{ order.status }}"  readonly/></th>
+                  <th><input style="width: 100px; text-align: center" type="text"  name="order"   value="{{ order.id }}"  readonly/></th>
+                  <th><input style="width: 150px; text-align: center" type="text"  name="time"   value="{{ order.timestamp }}"  readonly/></th>
+                  <th><input style="width: 150px; text-align: center" type="text"  id='pick_{{ order.id }}' name="pick"   value="{{ order.pick_up }}"  readonly/></th>
+									<th><input style="width: 150px; text-align: center" type="text"  name="service"   value="{{ order.service }}"  readonly/></th>
+                  <th><input style="width: 150px; text-align: center" type="text"  name="status"   value="{{ order.status }}"  readonly/></th>
                   <th>
                       <form action="{{ url_for('auth.reschedule', order_id= order.id )}}" method='GET' enctype='multipart/form-data'>
                           <input style="display: none" name="order"   value="{{ order.id }}"/>

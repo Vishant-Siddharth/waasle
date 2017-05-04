@@ -122,6 +122,7 @@ def book_now():
                 order.pick_up = tmp
                 order.user_id = current_user.id
                 order.status = 'Processing'
+                order.service = request.args.get('service')
                 db.session.add(order)
                 db.session.commit()
                 if request.args.get('choice') == 'new':
@@ -133,8 +134,8 @@ def book_now():
                     user.pincode = request.args.get('pincode') if request.args.get('pincode') else user.pincode
                     db.session.add(user)
                     db.session.commit()
-                send_email(current_user.email, 'Scheduled Pickup',
-                           'auth/email/pickup', user=current_user, order=order)
+                #send_email(current_user.email, 'Scheduled Pickup',
+                           #'auth/email/pickup', user=current_user, order=order)
                 flash("Your order has been placed")
                 return redirect(url_for('auth.orders'))
             except:
@@ -168,6 +169,7 @@ def reschedule():
                 try:
                     order.pick_up = tmp
                     order.status = 'Rescheduled'
+                    order.service = request.args.get('service')
                     db.session.add(order)
                     db.session.commit()
                     if request.args.get('choice') == 'new':

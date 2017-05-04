@@ -116,6 +116,7 @@ class Order(db.Model):
     products = db.relationship('Product', secondary=relationship_table, backref='orders')
     pick_up = db.Column(db.Date(), nullable=False)
     status = db.Column(db.String(20))
+    service = db.Column(db.String(20))
 
 
 class Product(db.Model):

@@ -98,6 +98,9 @@ Waasle Laundry| Change Password
 				<span style="display:inline-block">{{ form_re.pincode.label() }}</span><span>&nbsp;&nbsp;&nbsp;{{ form_re.pincode(**{'id': 'pincode', 'value': current_user.pincode, 'readonly': 'readonly', 'tabindex':"8"}) }}</span>
 			</div>
 			<div>
+				<span style="display:inline-block">{{ form_re.service.label() }}</span><span>&nbsp;&nbsp;&nbsp;{{ form_re.service(**{'id': 'service', 'value': 'Laundry', 'readonly': 'readonly', 'tabindex':"9"}) }}</span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+			</div>
+			<div>
 				<span>{{ form_re.date(**{'placeholder': "Date", 'tabindex':"10", 'type': 'date', }) }}</span>
 			</div>
 			<div>
