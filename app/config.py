@@ -18,7 +18,7 @@ class Config:
     RECAPTCHA_PRIVATE_KEY = "6LeMdw8UAAAAAF2fRlBLcNSSxv-sLaxCg6WVnzZt"
 
     @staticmethod
-    def init_app(app): 
+    def init_app(app):
         pass
 
 
@@ -33,7 +33,7 @@ class TestingConfig(Config):
 
 
 class ProductionConfig(Config):
-    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:waaslemysqlroot@127.0.0.1:3306/waasle"
+    SQLALCHEMY_DATABASE_URI = "mysql+pymysql://root:toor@localhost/waasle"
 
 
 config = {
