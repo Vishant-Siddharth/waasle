@@ -83,6 +83,12 @@ def why_us():
     return render_template('why-us.html')
 
 
+@main.route('/offers', methods=['GET', 'POST'])
+def offer():
+    return render_template('offer.html')
+
+
+
 @main.route('/about-us', methods=['GET', 'POST'])
 def about_us():
     return render_template('about_us.html')
