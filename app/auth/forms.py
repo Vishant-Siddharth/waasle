@@ -94,7 +94,7 @@ class BookNowForm(FlaskForm):
     address_2 = StringField('Address Line 2', validators=[DataRequired(), Length(4, 256), ])
     city = SelectField('City', validators=[DataRequired()], choices=[('Lucknow', 'Lucknow')])
     service = SelectField('Service', validators=[DataRequired()], choices=[('Laundry', 'Laundry'),
-    ('Dry Washing', 'Dry Washing'), ('Steam Press', 'Steam Press')])
+    ('Dry Washing', 'Dry Washing'), ('Steam Press', 'Steam Press'), ('Addons', 'Addons')])
     pincode = SelectField('Pin Code', validators=[DataRequired()], choices=[('226001', '226001'), ('226002', '226002'),
         ('226003', '226003'), ('226004', '226004'), ('226005', '226005'), ('226006', '226006'), ('226007', '226007'),
         ('226008', '226008'), ('226009', '226009'), ('226010', '226010'), ('226011', '226011'), ('226012', '226012'),
@@ -118,7 +118,7 @@ class RescheduleForm(FlaskForm):
     address_2 = StringField('Address Line 2', validators=[DataRequired(), Length(4, 256), ])
     city = SelectField('City', validators=[DataRequired()], choices=[('Lucknow', 'Lucknow')])
     service = SelectField('Service', validators=[DataRequired()], choices=[('Laundry', 'Laundry'),
-    ('Dry Washing', 'Dry Washing'), ('Steam Press', 'Steam Press')])
+    ('Dry Washing', 'Dry Washing'), ('Steam Press', 'Steam Press'), ('Addons', 'Addons')])
     pincode = SelectField('Pin Code', validators=[DataRequired()], choices=[('226001', '226001'), ('226002', '226002'),
         ('226003', '226003'), ('226004', '226004'), ('226005', '226005'), ('226006', '226006'), ('226007', '226007'),
         ('226008', '226008'), ('226009', '226009'), ('226010', '226010'), ('226011', '226011'), ('226012', '226012'),
