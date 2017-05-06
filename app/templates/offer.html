@@ -1,0 +1,31 @@
+{% extends 'base.html' %}
+
+{% block title %}
+{{ super() }}
+{% endblock %}
+
+{%block styles %}
+{{super()}}
+	<link href="{{ url_for('static', filename='css/form.css') }}" rel="stylesheet" type="text/css" media="all" />
+	<link href="{{ url_for('static', filename='css/flexslider.css') }}" rel="stylesheet" type="text/css" media="all" />
+{% endblock styles %}
+
+
+{% block content %}
+
+<div class="row" style="width:90%;margin-left:auto;margin-right:auto;">
+
+    <div class="col-sm-3">
+                <img src="../static/images/single_pack.png"/>
+    </div>
+    <div class="col-sm-3">
+                <img src="../static/images/family_pack.png"/>
+
+    </div>
+    <div class="col-sm-3">
+                <img src="../static/images/couple_pack.png"/>
+    </div>
+</div>
+
+
+{% endblock content %}
